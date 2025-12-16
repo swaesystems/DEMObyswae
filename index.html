@@ -5,136 +5,291 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freight Downs | Nationwide Freight Brokerage</title>
 
-  <meta name="description" content="Freight Downs is a nationwide freight brokerage providing fast, reliable coverage with modern logistics systems." />
-  <meta name="format-detection" content="telephone=no,email=no,address=no" />
+  <meta name="description" content="Freight Downs is a nationwide freight brokerage built for speed, clarity, and modern logistics." />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- INLINE CSS -->
+  <style>
+    :root {
+      --red:#e10600;
+      --white:#ffffff;
+      --dark:#0b0b0b;
+      --dark-2:#151515;
+      --gray:#bfbfbf;
+    }
 
-  <!-- JS -->
-  <script src="js/main.js" defer></script>
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body {
+      font-family:'Inter', sans-serif;
+      background:var(--dark);
+      color:var(--white);
+      line-height:1.6;
+    }
+
+    header {
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
+      background:rgba(10,10,10,0.85);
+      backdrop-filter:blur(6px);
+    }
+
+    .nav {
+      max-width:1200px;
+      margin:auto;
+      padding:18px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo {
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:1px;
+    }
+
+    .logo span {
+      color:var(--red);
+    }
+
+    .hero {
+      height:100vh;
+      background:url("assets/images/hero-truck.PNG") center/cover no-repeat;
+      position:relative;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.55),
+        rgba(10,10,10,0.95)
+      );
+    }
+
+    .hero-content {
+      position:relative;
+      max-width:800px;
+      padding:0 24px;
+      margin-left:6%;
+    }
+
+    .hero h1 {
+      font-size:48px;
+      font-weight:600;
+      margin-bottom:20px;
+    }
+
+    .hero p {
+      font-size:18px;
+      color:var(--gray);
+      margin-bottom:32px;
+    }
+
+    .btn-primary {
+      background:var(--red);
+      color:var(--white);
+      border:none;
+      padding:16px 34px;
+      font-size:14px;
+      font-weight:500;
+      cursor:pointer;
+    }
+
+    .hero-note {
+      margin-top:14px;
+      font-size:13px;
+      color:var(--gray);
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav-container">
-      <div class="logo">
-        FREIGHT<span>DOWNS</span>
-      </div>
-      <nav class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#coverage">Request Coverage</a>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="nav">
+    <div class="logo">FREIGHT<span>DOWNS</span></div>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Nationwide Freight Brokerage</h1>
-      <p>
-        Reliable coverage. Fast communication.<br />
-        Built for modern logistics.
-      </p>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Nationwide Freight Brokerage</h1>
+    <p>
+      Reliable coverage. Fast communication.<br>
+      Built for modern logistics operations.
+    </p>
+    <button class="btn-primary" onclick="openDispatcher()">Request Coverage</button>
+    <div class="hero-note">After-hours dispatch available</div>
+  </div>
+</section>
+<style>
+  section {
+    padding:110px 24px;
+  }
 
-      <div class="hero-actions">
-        <button class="primary-btn" onclick="openDispatcher()">Request Coverage</button>
-        <span class="hero-note">After-hours dispatch available</span>
-      </div>
-    </div>
-  </section>
+  .container {
+    max-width:1200px;
+    margin:auto;
+  }
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
+  h2 {
+    font-size:34px;
+    margin-bottom:40px;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+  }
+
+  .service-box {
+    background:var(--dark-2);
+    padding:26px;
+  }
+
+  .service-box img {
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    margin-bottom:16px;
+  }
+
+  .service-box h3 {
+    font-size:18px;
+    margin-bottom:8px;
+  }
+
+  .service-box p {
+    font-size:14px;
+    color:var(--gray);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+
+  .about ul {
+    list-style:none;
+    margin-top:24px;
+  }
+
+  .about li {
+    font-size:14px;
+    margin-bottom:10px;
+  }
+
+  .about img {
+    width:100%;
+    object-fit:cover;
+  }
+
+  /* COVERAGE */
+  .coverage {
+    text-align:center;
+    background:#0e0e0e;
+  }
+
+  .coverage p {
+    color:var(--gray);
+    margin-bottom:30px;
+  }
+
+  @media(max-width:900px){
+    .hero h1 { font-size:36px; }
+    .about-grid { grid-template-columns:1fr; }
+  }
+</style>
+
+<section class="services">
+  <div class="container">
     <h2>What We Move</h2>
-
-    <div class="service-grid">
-      <div class="service-card">
-        <img src="assets/images/fleet-1.PNG" alt="Full Truckload Freight" />
+    <div class="services-grid">
+      <div class="service-box">
+        <img src="assets/images/fleet-1.PNG">
         <h3>Full Truckload (FTL)</h3>
-        <p>Reliable nationwide coverage with vetted carriers.</p>
+        <p>Nationwide coverage with dependable carrier partners.</p>
       </div>
-
-      <div class="service-card">
-        <img src="assets/images/fleet-2.PNG" alt="Expedited Freight" />
+      <div class="service-box">
+        <img src="assets/images/fleet-2.PNG">
         <h3>Expedited Freight</h3>
         <p>Time-sensitive shipments handled with urgency.</p>
       </div>
-
-      <div class="service-card">
-        <img src="assets/images/warehouse.PNG" alt="Equipment Types" />
+      <div class="service-box">
+        <img src="assets/images/warehouse.PNG">
         <h3>Dry Van • Reefer • Flatbed</h3>
-        <p>Flexible equipment options for all freight types.</p>
+        <p>Flexible equipment for a wide range of freight.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-container">
-      <div class="about-text">
-        <h2>Why Freight Downs</h2>
-        <p>
-          Freight Downs was built to remove friction from freight movement.
-          We focus on speed, clarity, and reliability — ensuring shippers get
-          coverage when they need it.
-        </p>
-
-        <ul class="about-list">
-          <li>24/7 dispatch availability</li>
-          <li>Fast response times</li>
-          <li>Clear communication</li>
-          <li>Modern logistics workflow</li>
-        </ul>
-      </div>
-
-      <div class="about-image">
-        <img src="assets/images/hero-truck.PNG" alt="Freight Operations" />
-      </div>
-    </div>
-  </section>
-
-  <!-- REQUEST COVERAGE -->
-  <section class="coverage" id="coverage">
-    <div class="coverage-content">
-      <h2>Request Coverage</h2>
+<section class="about">
+  <div class="container about-grid">
+    <div>
+      <h2>Why Freight Downs</h2>
       <p>
-        Need to move freight?<br />
-        Our dispatch team is available around the clock.
+        Freight Downs was built to remove friction from freight movement.
+        We focus on speed, clarity, and reliability — ensuring coverage when it matters most.
       </p>
-
-      <button class="primary-btn" onclick="openDispatcher()">
-        Start Load Request
-      </button>
-
-      <p class="coverage-note">
-        After-hours requests are reviewed immediately.
-      </p>
+      <ul>
+        <li>24/7 availability</li>
+        <li>Fast response times</li>
+        <li>Clear dispatch communication</li>
+        <li>Modern logistics workflow</li>
+      </ul>
     </div>
-  </section>
+    <img src="assets/images/hero-truck.PNG">
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">
-        FREIGHT<span>DOWNS</span>
-      </div>
-      <p>Nationwide Freight Brokerage</p>
-      <p class="footer-copy">© 2025 Freight Downs. All rights reserved.</p>
-    </div>
-  </footer>
+<section class="coverage">
+  <div class="container">
+    <h2>Request Coverage</h2>
+    <p>Our dispatch team is available around the clock.</p>
+    <button class="btn-primary" onclick="openDispatcher()">Start Load Request</button>
+    <p class="hero-note">After-hours requests are reviewed immediately</p>
+  </div>
+</section>
+<footer style="background:#070707;padding:40px 24px;text-align:center;">
+  <div class="logo">FREIGHT<span>DOWNS</span></div>
+  <p style="color:var(--gray);margin-top:8px;">Nationwide Freight Brokerage</p>
+  <p style="color:var(--gray);font-size:12px;margin-top:12px;">
+    © 2025 Freight Downs. All rights reserved.
+  </p>
+</footer>
 
-  <!-- BOTPRESS / DISPATCHER PLACEHOLDER -->
-  <!-- Real dispatcher (Botpress) script will be embedded here -->
+<!-- DISPATCHER WEBCHAT PLACEHOLDER -->
+<!-- PASTE YOUR DISPATCHER / WEBCHAT SCRIPT HERE -->
+<!-- LEAVE EMPTY UNTIL READY -->
+
+<script>
+  function openDispatcher() {
+    // This will trigger your dispatcher webchat once embedded
+    console.log("Dispatcher opening...");
+  }
+</script>
 
 </body>
 </html>
