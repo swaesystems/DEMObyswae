@@ -4,117 +4,328 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freight Downs | Nationwide Freight Brokerage</title>
+  <meta name="description" content="Freight Downs is a nationwide freight brokerage built for speed, clarity, and reliable coverage." />
+  <meta name="format-detection" content="telephone=no,email=no,address=no" />
 
-  <meta name="description" content="Freight Downs is a nationwide freight brokerage built for speed, clarity, and modern logistics." />
-
-  <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- INLINE CSS -->
   <style>
-    :root {
-      --red:#e10600;
-      --white:#ffffff;
-      --dark:#0b0b0b;
-      --dark-2:#151515;
-      --gray:#bfbfbf;
+    :root{
+      --red:#ff1a1a;            /* BRIGHT */
+      --white:#ffffff;          /* BRIGHT */
+      --black:#050505;          /* DEEP */
+      --ink:#0b0b0b;
+      --ink2:#101010;
+      --line:rgba(255,255,255,0.10);
+      --muted:rgba(255,255,255,0.72);
+      --muted2:rgba(255,255,255,0.58);
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
+      --radius: 18px;
     }
 
-    * {
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body {
-      font-family:'Inter', sans-serif;
-      background:var(--dark);
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--black);
       color:var(--white);
-      line-height:1.6;
+      line-height:1.55;
+      overflow-x:hidden;
     }
 
-    header {
+    /* Subtle industrial grid */
+    body:before{
+      content:"";
       position:fixed;
-      top:0;
-      width:100%;
-      z-index:1000;
-      background:rgba(10,10,10,0.85);
-      backdrop-filter:blur(6px);
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(255,26,26,0.20), transparent 45%),
+        radial-gradient(circle at 80% 35%, rgba(255,255,255,0.09), transparent 55%),
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: auto, auto, 58px 58px, 58px 58px;
+      opacity:0.55;
+      z-index:-2;
     }
 
-    .nav {
-      max-width:1200px;
-      margin:auto;
-      padding:18px 24px;
+    /* Layout helpers */
+    .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(10,10,10,0.55);
+      backdrop-filter: blur(8px);
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:0.3px;
+      text-transform:uppercase;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;background:var(--red);
+      box-shadow:0 0 18px rgba(255,26,26,0.75);
+    }
+
+    /* NAV */
+    header{
+      position:fixed;top:0;left:0;right:0;
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      background:rgba(5,5,5,0.72);
+      backdrop-filter: blur(10px);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 0;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      font-weight:700;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      font-size:15px;
+      user-select:none;
+    }
+    .brand span{color:var(--red)}
+    .navlinks{
+      display:flex;align-items:center;gap:18px;
+    }
+    .navlinks a{
+      color:rgba(255,255,255,0.86);
+      text-decoration:none;
+      font-size:13px;
+      padding:10px 10px;
+      border-radius:10px;
+      border:1px solid transparent;
+    }
+    .navlinks a:hover{
+      border-color:rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+    }
+    .cta{
+      display:flex;align-items:center;gap:12px;
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:600;
+      font-size:13px;
+      letter-spacing:0.2px;
+      transition: transform .15s ease, opacity .15s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn-red{
+      background:var(--red);
+      color:var(--white);
+      box-shadow:0 14px 30px rgba(255,26,26,0.22);
+    }
+    .btn-red:hover{opacity:0.92}
+    .btn-ghost{
+      background:rgba(255,255,255,0.06);
+      color:var(--white);
+      border:1px solid rgba(255,255,255,0.14);
+    }
+    .btn-ghost:hover{background:rgba(255,255,255,0.09)}
+    .hamburger{
+      display:none;
+      width:44px;height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.06);
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      flex-direction:column;
+    }
+    .hamburger span{
+      width:18px;height:2px;background:rgba(255,255,255,0.92);
+      border-radius:2px;
+    }
+
+    /* Mobile menu */
+    .mobileMenu{
+      display:none;
+      border-top:1px solid rgba(255,255,255,0.08);
+      background:rgba(5,5,5,0.88);
+    }
+    .mobileMenu .wrap{
+      padding:14px 22px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .mobileMenu a{
+      color:rgba(255,255,255,0.92);
+      text-decoration:none;
+      font-size:13px;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.04);
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      padding-top:92px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(to bottom, rgba(5,5,5,0.55), rgba(5,5,5,0.95)),
+        url("assets/images/hero-truck.PNG") center/cover no-repeat;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width:420px;height:420px;
+      background:radial-gradient(circle, rgba(255,26,26,0.45), transparent 65%);
+      filter: blur(14px);
+      opacity:0.85;
+      z-index:0;
+    }
+    .heroInner{
+      position:relative;
+      z-index:1;
+      padding:70px 0 30px;
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap:28px;
+      align-items:end;
+    }
+    .headline{
+      margin-top:16px;
+      font-size:56px;
+      line-height:1.03;
+      letter-spacing:-1.2px;
+      font-weight:700;
+    }
+    .sub{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:620px;
+    }
+    .heroActions{
+      margin-top:26px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .heroMeta{
+      margin-top:18px;
+      color:var(--muted2);
+      font-size:13px;
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .heroMeta .tag{
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(0,0,0,0.40);
+      padding:10px 12px;
+      border-radius:999px;
+    }
+
+    /* Right-side panel (industrial) */
+    .panel{
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(10,10,10,0.60);
+      backdrop-filter: blur(10px);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .panel:before{
+      content:"";
+      position:absolute;
+      left:-60px; top:-60px;
+      width:220px;height:220px;
+      background:radial-gradient(circle, rgba(255,26,26,0.22), transparent 70%);
+      filter: blur(10px);
+    }
+    .panelTitle{
       display:flex;
       justify-content:space-between;
       align-items:center;
-    }
-
-    .logo {
-      font-size:18px;
-      font-weight:600;
-      letter-spacing:1px;
-    }
-
-    .logo span {
-      color:var(--red);
-    }
-
-    .hero {
-      height:100vh;
-      background:url("assets/images/hero-truck.PNG") center/cover no-repeat;
-      position:relative;
-      display:flex;
-      align-items:center;
-    }
-
-    .hero::after {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-        to bottom,
-        rgba(10,10,10,0.55),
-        rgba(10,10,10,0.95)
-      );
-    }
-
-    .hero-content {
-      position:relative;
-      max-width:800px;
-      padding:0 24px;
-      margin-left:6%;
-    }
-
-    .hero h1 {
-      font-size:48px;
-      font-weight:600;
-      margin-bottom:20px;
-    }
-
-    .hero p {
-      font-size:18px;
-      color:var(--gray);
-      margin-bottom:32px;
-    }
-
-    .btn-primary {
-      background:var(--red);
-      color:var(--white);
-      border:none;
-      padding:16px 34px;
-      font-size:14px;
-      font-weight:500;
-      cursor:pointer;
-    }
-
-    .hero-note {
-      margin-top:14px;
+      gap:12px;
       font-size:13px;
-      color:var(--gray);
+      letter-spacing:0.4px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.86);
+      margin-bottom:14px;
+      position:relative;
+      z-index:1;
+    }
+    .panelTitle b{color:var(--white)}
+    .panelRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      position:relative;
+      z-index:1;
+    }
+    .cardMini{
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      border-radius:16px;
+      padding:14px;
+    }
+    .cardMini .k{
+      font-size:12px;
+      color:rgba(255,255,255,0.70);
+      text-transform:uppercase;
+      letter-spacing:0.35px;
+      margin-bottom:8px;
+    }
+    .cardMini .v{
+      font-size:14px;
+      font-weight:600;
+      color:rgba(255,255,255,0.95);
+      line-height:1.25;
+    }
+
+    /* Section base */
+    section{padding:96px 0}
+    .sectionTitle{
+      font-size:34px;
+      letter-spacing:-0.6px;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+    .sectionSub{
+      color:var(--muted);
+      max-width:760px;
+      font-size:15px;
+      margin-bottom:34px;
+    }
+
+    /* Responsive */
+    @media(max-width:980px){
+      .heroInner{grid-template-columns:1fr; padding:52px 0 12px}
+      .headline{font-size:44px}
+      .panel{margin-top:16px}
+      .navlinks{display:none}
+      .hamburger{display:flex}
+    }
+    @media(max-width:520px){
+      .headline{font-size:38px}
+      .panelRow{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -122,172 +333,508 @@
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">FREIGHT<span>DOWNS</span></div>
+  <div class="wrap nav">
+    <div class="brand">FREIGHT <span>DOWNS</span></div>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="#services">Services</a>
+      <a href="#coverage">Request Coverage</a>
+      <a href="#operations">Operations</a>
+    </nav>
+
+    <div class="cta">
+      <button class="btn btn-ghost" onclick="scrollToSection('coverage')">Request Coverage</button>
+      <button class="btn btn-red" onclick="openDispatcher()">Open Dispatch</button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobileMenu" id="mobileMenu">
+    <div class="wrap">
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#coverage" onclick="closeMenu()">Request Coverage</a>
+      <a href="#operations" onclick="closeMenu()">Operations</a>
+      <a href="#footer" onclick="closeMenu()">Contact</a>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Nationwide Freight Brokerage</h1>
-    <p>
-      Reliable coverage. Fast communication.<br>
-      Built for modern logistics operations.
-    </p>
-    <button class="btn-primary" onclick="openDispatcher()">Request Coverage</button>
-    <div class="hero-note">After-hours dispatch available</div>
+<section class="hero" id="top">
+  <div class="wrap heroInner">
+
+    <div>
+      <div class="chip"><span class="dot"></span> 24/7 Coverage • Nationwide Lanes</div>
+      <h1 class="headline">Nationwide Freight Brokerage</h1>
+      <p class="sub">
+        Reliable coverage. Fast communication. Zero friction.
+        <br>Built for modern logistics operators who move with urgency.
+      </p>
+
+      <div class="heroActions">
+        <button class="btn btn-red" onclick="openDispatcher()">Request Coverage</button>
+        <button class="btn btn-ghost" onclick="scrollToSection('services')">View Services</button>
+      </div>
+
+      <div class="heroMeta">
+        <div class="tag">FTL • Expedited</div>
+        <div class="tag">Dry Van • Reefer • Flatbed</div>
+        <div class="tag">After-hours available</div>
+      </div>
+    </div>
+
+    <aside class="panel" aria-label="Operations overview panel">
+      <div class="panelTitle">
+        <div><b>Dispatch</b> Intake</div>
+        <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.72);font-size:12px;">
+          <span style="width:8px;height:8px;border-radius:99px;background:var(--red);box-shadow:0 0 18px rgba(255,26,26,0.7);"></span>
+          online
+        </div>
+      </div>
+
+      <div class="panelRow">
+        <div class="cardMini">
+          <div class="k">Response</div>
+          <div class="v">Immediate</div>
+        </div>
+        <div class="cardMini">
+          <div class="k">Intake</div>
+          <div class="v">Structured</div>
+        </div>
+        <div class="cardMini">
+          <div class="k">Routing</div>
+          <div class="v">Dispatch-ready</div>
+        </div>
+        <div class="cardMini">
+          <div class="k">Coverage</div>
+          <div class="v">24/7</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;border-top:1px solid rgba(255,255,255,0.10);padding-top:14px;position:relative;z-index:1;">
+        <div style="color:rgba(255,255,255,0.78);font-size:13px;line-height:1.5;">
+          Use <b>Request Coverage</b> to submit a load. Dispatch confirms details and routes next steps.
+        </div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-red" onclick="openDispatcher()">Start Load Request</button>
+          <button class="btn btn-ghost" onclick="scrollToSection('coverage')">How it works</button>
+        </div>
+      </div>
+    </aside>
+
   </div>
 </section>
 <style>
-  section {
-    padding:110px 24px;
-  }
-
-  .container {
-    max-width:1200px;
-    margin:auto;
-  }
-
-  h2 {
-    font-size:34px;
-    margin-bottom:40px;
-  }
-
   /* SERVICES */
-  .services-grid {
+  .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
+    gap:18px;
   }
-
-  .service-box {
-    background:var(--dark-2);
-    padding:26px;
+  .grid4{
+    grid-template-columns:repeat(4, minmax(0,1fr));
   }
+  .grid2{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+  }
+  @media(max-width:980px){ .grid4{grid-template-columns:repeat(2, minmax(0,1fr))} }
+  @media(max-width:560px){ .grid4,.grid2{grid-template-columns:1fr} }
 
-  .service-box img {
+  .svcCard{
+    border:1px solid rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.035);
+    border-radius:var(--radius);
+    padding:18px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 10px 34px rgba(0,0,0,0.35);
+  }
+  .svcCard:before{
+    content:"";
+    position:absolute;
+    inset:auto -80px -80px auto;
+    width:220px;height:220px;
+    background:radial-gradient(circle, rgba(255,26,26,0.18), transparent 70%);
+    filter: blur(10px);
+    opacity:0.55;
+  }
+  .svcImg{
     width:100%;
-    height:160px;
+    height:150px;
     object-fit:cover;
-    margin-bottom:16px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.10);
+    margin-bottom:14px;
+    background:rgba(255,255,255,0.03);
+    position:relative;
+    z-index:1;
+  }
+  .svcName{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:-0.2px;
+    margin-bottom:6px;
+    position:relative;
+    z-index:1;
+  }
+  .svcDesc{
+    color:var(--muted);
+    font-size:13px;
+    position:relative;
+    z-index:1;
   }
 
-  .service-box h3 {
-    font-size:18px;
-    margin-bottom:8px;
+  /* OPERATIONS STRIP */
+  .strip{
+    border-top:1px solid rgba(255,255,255,0.10);
+    border-bottom:1px solid rgba(255,255,255,0.10);
+    background:rgba(255,255,255,0.03);
   }
-
-  .service-box p {
-    font-size:14px;
-    color:var(--gray);
-  }
-
-  /* ABOUT */
-  .about-grid {
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:60px;
+  .stripInner{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
     align-items:center;
+    justify-content:space-between;
+    padding:18px 0;
+  }
+  .stripItem{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    color:rgba(255,255,255,0.86);
+    font-size:13px;
+  }
+  .stripItem b{color:var(--white)}
+  .pill{
+    border:1px solid rgba(255,255,255,0.12);
+    background:rgba(0,0,0,0.35);
+    padding:10px 12px;
+    border-radius:999px;
   }
 
-  .about ul {
-    list-style:none;
-    margin-top:24px;
+  /* OPERATIONS BLOCK */
+  .ops{
+    background:linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
   }
-
-  .about li {
-    font-size:14px;
+  .opsCard{
+    border:1px solid rgba(255,255,255,0.12);
+    background:rgba(10,10,10,0.55);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow: var(--shadow);
+  }
+  .opsTop{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .opsTop h3{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:-0.2px;
+    margin-bottom:6px;
+  }
+  .opsTop p{color:var(--muted);font-size:13px;max-width:680px}
+  .opsSteps{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:14px;
+  }
+  @media(max-width:980px){ .opsSteps{grid-template-columns:1fr} }
+  .step{
+    border:1px solid rgba(255,255,255,0.10);
+    background:rgba(255,255,255,0.04);
+    border-radius:16px;
+    padding:16px;
+  }
+  .step .n{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;height:34px;border-radius:12px;
+    background:var(--red);
+    font-weight:800;
     margin-bottom:10px;
   }
+  .step h4{font-size:14px;margin-bottom:6px}
+  .step p{font-size:13px;color:var(--muted)}
+</style>
 
-  .about img {
-    width:100%;
-    object-fit:cover;
-  }
+<section id="services">
+  <div class="wrap">
+    <div class="sectionTitle">Services</div>
+    <div class="sectionSub">
+      Built for real-world freight. Clear communication, dependable coverage, and dispatch-ready intake.
+    </div>
 
+    <div class="grid grid4">
+      <div class="svcCard">
+        <img class="svcImg" src="assets/images/fleet-1.PNG" alt="Full Truckload service">
+        <div class="svcName">Full Truckload (FTL)</div>
+        <div class="svcDesc">Nationwide lanes with reliable carrier partners.</div>
+      </div>
+
+      <div class="svcCard">
+        <img class="svcImg" src="assets/images/fleet-2.PNG" alt="Expedited service">
+        <div class="svcName">Expedited Freight</div>
+        <div class="svcDesc">Time-sensitive coverage with fast confirmation.</div>
+      </div>
+
+      <div class="svcCard">
+        <img class="svcImg" src="assets/images/warehouse.PNG" alt="Equipment types">
+        <div class="svcName">Dry Van • Reefer • Flatbed</div>
+        <div class="svcDesc">Flexible equipment options for multiple freight types.</div>
+      </div>
+
+      <div class="svcCard">
+        <img class="svcImg" src="assets/images/hero-truck.PNG" alt="Nationwide coverage">
+        <div class="svcName">Nationwide Coverage</div>
+        <div class="svcDesc">Coast-to-coast lanes built for consistency.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="wrap stripInner">
+    <div class="stripItem pill"><b>Coverage:</b> 24/7</div>
+    <div class="stripItem pill"><b>Intake:</b> Structured</div>
+    <div class="stripItem pill"><b>Communication:</b> Fast</div>
+    <div class="stripItem pill"><b>Operations:</b> Dispatch-ready</div>
+  </div>
+</div>
+
+<section class="ops" id="operations">
+  <div class="wrap">
+    <div class="sectionTitle">Operations</div>
+    <div class="sectionSub">
+      Freight Downs is designed around speed and clarity — so dispatch can move immediately with complete information.
+    </div>
+
+    <div class="opsCard">
+      <div class="opsTop">
+        <div>
+          <h3>Dispatch Intake</h3>
+          <p>
+            Request coverage in seconds. Dispatch confirms details, routes next steps, and follows up with clear communication.
+            After-hours requests are handled with urgency.
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-red" onclick="openDispatcher()">Request Coverage</button>
+        </div>
+      </div>
+
+      <div class="opsSteps">
+        <div class="step">
+          <div class="n">1</div>
+          <h4>Send load details</h4>
+          <p>Pickup, delivery, time window, equipment, weight, and contact info.</p>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <h4>Confirm & route</h4>
+          <p>Dispatch receives clean, complete intake — no back-and-forth.</p>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <h4>Move fast</h4>
+          <p>Faster confirmation, fewer missed opportunities, cleaner handoffs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <style>
   /* COVERAGE */
-  .coverage {
-    text-align:center;
-    background:#0e0e0e;
+  .coverage{
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,26,26,0.18), transparent 45%),
+      radial-gradient(circle at 80% 35%, rgba(255,255,255,0.08), transparent 55%),
+      linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
   }
 
-  .coverage p {
-    color:var(--gray);
-    margin-bottom:30px;
+  .coverageBox{
+    border:1px solid rgba(255,255,255,0.14);
+    background:rgba(10,10,10,0.62);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:26px;
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap:18px;
+    align-items:center;
+  }
+  @media(max-width:980px){ .coverageBox{grid-template-columns:1fr} }
+
+  .coverageBox h3{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-0.3px;
+    margin-bottom:10px;
+  }
+  .coverageBox p{
+    color:var(--muted);
+    font-size:14px;
+  }
+  .coverageList{
+    margin-top:14px;
+    display:grid;
+    gap:10px;
+  }
+  .coverageItem{
+    border:1px solid rgba(255,255,255,0.10);
+    background:rgba(255,255,255,0.04);
+    border-radius:16px;
+    padding:14px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:center;
+  }
+  .coverageItem .l{
+    font-size:13px;
+    color:rgba(255,255,255,0.86);
+    font-weight:600;
+  }
+  .coverageItem .r{
+    font-size:12px;
+    color:var(--muted2);
+    border:1px solid rgba(255,255,255,0.10);
+    padding:8px 10px;
+    border-radius:999px;
+    background:rgba(0,0,0,0.30);
   }
 
-  @media(max-width:900px){
-    .hero h1 { font-size:36px; }
-    .about-grid { grid-template-columns:1fr; }
+  /* FOOTER */
+  footer{
+    border-top:1px solid rgba(255,255,255,0.10);
+    padding:34px 0 44px;
+    background:rgba(0,0,0,0.55);
+  }
+  .foot{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .foot .brand{font-size:14px}
+  .foot small{color:var(--muted2);display:block;margin-top:8px;font-size:12px}
+  .footRight{
+    color:var(--muted2);
+    font-size:12px;
+    max-width:520px;
+    line-height:1.55;
   }
 </style>
 
-<section class="services">
-  <div class="container">
-    <h2>What We Move</h2>
-    <div class="services-grid">
-      <div class="service-box">
-        <img src="assets/images/fleet-1.PNG">
-        <h3>Full Truckload (FTL)</h3>
-        <p>Nationwide coverage with dependable carrier partners.</p>
+<section class="coverage" id="coverage">
+  <div class="wrap">
+    <div class="sectionTitle">Request Coverage</div>
+    <div class="sectionSub">
+      Submit a load request to dispatch. Use this for after-hours coverage and faster intake.
+    </div>
+
+    <div class="coverageBox">
+      <div>
+        <h3>Start a Load Request</h3>
+        <p>
+          Provide pickup & delivery details, time window, equipment, weight, and a contact number.
+          Dispatch will confirm and route next steps.
+        </p>
+
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn btn-red" onclick="openDispatcher()">Open Dispatch Intake</button>
+          <button class="btn btn-ghost" onclick="scrollToSection('top')">Back to top</button>
+        </div>
+
+        <div style="margin-top:14px;color:var(--muted2);font-size:12px;">
+          For demo purposes, dispatcher intake opens via embedded webchat.
+        </div>
       </div>
-      <div class="service-box">
-        <img src="assets/images/fleet-2.PNG">
-        <h3>Expedited Freight</h3>
-        <p>Time-sensitive shipments handled with urgency.</p>
-      </div>
-      <div class="service-box">
-        <img src="assets/images/warehouse.PNG">
-        <h3>Dry Van • Reefer • Flatbed</h3>
-        <p>Flexible equipment for a wide range of freight.</p>
+
+      <div class="coverageList" aria-label="Coverage highlights">
+        <div class="coverageItem">
+          <div class="l">Structured load intake</div>
+          <div class="r">clean handoff</div>
+        </div>
+        <div class="coverageItem">
+          <div class="l">After-hours availability</div>
+          <div class="r">24/7</div>
+        </div>
+        <div class="coverageItem">
+          <div class="l">Fast confirmation flow</div>
+          <div class="r">urgent lanes</div>
+        </div>
+        <div class="coverageItem">
+          <div class="l">Dispatch-ready details</div>
+          <div class="r">no chasing</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="about">
-  <div class="container about-grid">
+<footer id="footer">
+  <div class="wrap foot">
     <div>
-      <h2>Why Freight Downs</h2>
-      <p>
-        Freight Downs was built to remove friction from freight movement.
-        We focus on speed, clarity, and reliability — ensuring coverage when it matters most.
-      </p>
-      <ul>
-        <li>24/7 availability</li>
-        <li>Fast response times</li>
-        <li>Clear dispatch communication</li>
-        <li>Modern logistics workflow</li>
-      </ul>
+      <div class="brand">FREIGHT <span>DOWNS</span></div>
+      <small>Nationwide Freight Brokerage</small>
+      <small>© 2025 Freight Downs. All rights reserved.</small>
     </div>
-    <img src="assets/images/hero-truck.PNG">
-  </div>
-</section>
 
-<section class="coverage">
-  <div class="container">
-    <h2>Request Coverage</h2>
-    <p>Our dispatch team is available around the clock.</p>
-    <button class="btn-primary" onclick="openDispatcher()">Start Load Request</button>
-    <p class="hero-note">After-hours requests are reviewed immediately</p>
+    <div class="footRight">
+      This website is designed to demonstrate a modern freight intake and dispatch experience.
+      No external links are required for the demo.
+    </div>
   </div>
-</section>
-<footer style="background:#070707;padding:40px 24px;text-align:center;">
-  <div class="logo">FREIGHT<span>DOWNS</span></div>
-  <p style="color:var(--gray);margin-top:8px;">Nationwide Freight Brokerage</p>
-  <p style="color:var(--gray);font-size:12px;margin-top:12px;">
-    © 2025 Freight Downs. All rights reserved.
-  </p>
 </footer>
 
-<!-- DISPATCHER WEBCHAT PLACEHOLDER -->
-<!-- PASTE YOUR DISPATCHER / WEBCHAT SCRIPT HERE -->
-<!-- LEAVE EMPTY UNTIL READY -->
+<!-- =========================
+     DISPATCHER WEBCHAT PLACEHOLDER
+     Paste your dispatcher / webchat script BELOW this line.
+     Leave blank until ready.
+========================== -->
+
+<!-- PASTE WEBCHAT SCRIPT HERE -->
 
 <script>
-  function openDispatcher() {
-    // This will trigger your dispatcher webchat once embedded
-    console.log("Dispatcher opening...");
+  // Smooth scroll helper (no external links)
+  function scrollToSection(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Mobile menu
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMenu(){
+    if(!mobileMenu || !hamburgerBtn) return;
+    mobileMenu.style.display = 'none';
+    hamburgerBtn.setAttribute('aria-expanded','false');
+  }
+
+  if(hamburgerBtn){
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+      hamburgerBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.style.display = isOpen ? 'none' : 'block';
+    });
+  }
+
+  // Dispatcher open hook (will be wired once webchat is pasted)
+  function openDispatcher(){
+    // When you paste your webchat script, replace this with that widget's open command.
+    // For now, we just scroll to the coverage section to keep UX clean.
+    scrollToSection('coverage');
+    console.log('Dispatcher intake trigger fired.');
   }
 </script>
 
