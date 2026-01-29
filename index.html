@@ -1,236 +1,686 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Freight Downs | Nationwide Freight Brokerage</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>IronPeak Logistics | Reliable Freight. On Time. Every Time.</title>
+  <meta name="description" content="IronPeak Logistics provides dependable dry van and reefer freight across major U.S. lanes. Fast dispatch, compliant operations, and reliable delivery." />
 
-  <meta name="description" content="Nationwide freight brokerage built for speed, clarity, and modern operations." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:title" content="IronPeak Logistics" />
+  <meta property="og:description" content="Reliable freight. On time. Every time." />
+  <meta property="og:type" content="website" />
 
   <style>
-    :root {
-      --red:#e10600;
-      --white:#ffffff;
-      --dark:#0a0a0a;
-      --dark-2:#141414;
-      --gray:#b9b9b9;
+    :root{
+      --bg:#0b0b0f;
+      --panel:#12121a;
+      --panel2:#0f0f16;
+      --text:#f3f3f6;
+      --muted:#b9bac6;
+      --line:rgba(255,255,255,.10);
+      --gold:#d6b25e;
+      --gold2:#f0d28a;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:26px;
+      --max:1180px;
     }
-
-    * {
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
       margin:0;
-      padding:0;
-      box-sizing:border-box;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% -10%, rgba(214,178,94,.16), transparent 55%),
+        radial-gradient(700px 420px at 80% 0%, rgba(240,210,138,.10), transparent 55%),
+        radial-gradient(700px 420px at 50% 120%, rgba(214,178,94,.07), transparent 60%),
+        linear-gradient(180deg, #07070b, var(--bg));
+      overflow-x:hidden;
     }
-
-    body {
-      font-family:'Inter', sans-serif;
-      background:var(--dark);
-      color:var(--white);
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,11,15,.65);
+      border-bottom:1px solid var(--line);
     }
-
-    header {
-      position:fixed;
-      top:0;
-      width:100%;
-      background:rgba(10,10,10,0.9);
-      backdrop-filter:blur(8px);
-      z-index:1000;
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
     }
-
-    .nav {
-      max-width:1200px;
-      margin:auto;
-      padding:18px 24px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width: 220px;
     }
-
-    .logo {
-      font-size:16px;
-      font-weight:600;
-      letter-spacing:1px;
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.20), transparent 60%),
+        linear-gradient(135deg, rgba(214,178,94,.95), rgba(240,210,138,.65));
+      box-shadow: 0 10px 30px rgba(214,178,94,.22);
+      position:relative;
+      overflow:hidden;
     }
-
-    .logo span {
-      color:var(--red);
+    .logo:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+      transform: rotate(20deg);
+      animation: sheen 4.8s ease-in-out infinite;
     }
-
-    .nav-actions button {
-      background:var(--red);
-      border:none;
-      color:var(--white);
-      padding:10px 18px;
+    @keyframes sheen{
+      0%{transform: translateX(-40%) rotate(20deg); opacity:.0}
+      30%{opacity:.28}
+      55%{opacity:.0}
+      100%{transform: translateX(40%) rotate(20deg); opacity:0}
+    }
+    .brand h1{
+      font-size:14px; margin:0; letter-spacing:.35px;
+      text-transform:uppercase;
+    }
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+    .links{
+      display:flex; gap:18px; align-items:center;
+    }
+    .links a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      transition:.18s ease;
+    }
+    .links a:hover{color:var(--text); background: rgba(255,255,255,.06)}
+    .ctaRow{display:flex; gap:10px; align-items:center}
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
       font-size:13px;
       cursor:pointer;
+      transition:.18s ease;
+      display:inline-flex; align-items:center; gap:9px;
+      user-select:none;
+      white-space:nowrap;
     }
-
-    .hero {
-      height:100vh;
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06)}
+    .btnGold{
+      border:1px solid rgba(214,178,94,.38);
+      background: linear-gradient(180deg, rgba(214,178,94,.22), rgba(214,178,94,.10));
+      box-shadow: 0 18px 45px rgba(214,178,94,.12);
+    }
+    .btnGold:hover{border-color: rgba(240,210,138,.55)}
+    .pill{
+      font-size:11px;
+      color: rgba(240,210,138,.95);
+      border:1px solid rgba(214,178,94,.28);
+      background: rgba(214,178,94,.08);
+      padding:6px 10px;
+      border-radius:999px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      width:fit-content;
+    }
+    .hero{
+      padding:52px 0 26px;
+      position:relative;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .heroLeft{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .heroLeft:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(500px 220px at 25% 0%, rgba(214,178,94,.16), transparent 60%),
+        radial-gradient(380px 220px at 85% 30%, rgba(240,210,138,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .heroLeft > *{position:relative}
+    .hero h2{
+      margin:12px 0 10px;
+      font-size:40px;
+      line-height:1.1;
+      letter-spacing:-.5px;
+    }
+    .hero h2 span{color: var(--gold2)}
+    .hero p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+      max-width: 62ch;
+    }
+    .heroBullets{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:14px;
+    }
+    .bullet{
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.16);
+      border-radius: 14px;
+      padding:10px 12px;
+      font-size:12px;
+      color:var(--muted);
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(214,178,94,.95);
+      box-shadow: 0 0 0 4px rgba(214,178,94,.12);
+      margin-top:4px;
+      flex:0 0 auto;
+    }
+    .heroRight{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(18,18,26,.92), rgba(12,12,18,.92));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .heroRight:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(420px 220px at 70% -10%, rgba(214,178,94,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .heroRight > *{position:relative}
+    .cardTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .cardTitle h3{margin:0; font-size:14px; letter-spacing:.25px; text-transform:uppercase}
+    .mini{
+      font-size:12px; color:var(--muted);
+      margin:0;
+      line-height:1.5;
+    }
+    .form{
+      display:grid;
+      gap:10px;
+      margin-top:4px;
+    }
+    .input{
+      width:100%;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      border-radius: 14px;
+      padding:12px 12px;
+      font-size:13px;
+      outline:none;
+    }
+    .input::placeholder{color: rgba(185,186,198,.68)}
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .help{
+      font-size:11px;
+      color: rgba(185,186,198,.75);
+      margin:6px 0 0;
+    }
+    .section{
+      padding:22px 0;
+    }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .box{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.30);
+    }
+    .box h4{margin:0 0 8px; font-size:14px}
+    .box p{margin:0; color:var(--muted); font-size:13px; line-height:1.55}
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .titleRow{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .titleRow h3{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.25px;
+      text-transform:uppercase;
+    }
+    .titleRow p{margin:0; font-size:12px; color:var(--muted)}
+    .videoBox{
+      border:1px solid rgba(214,178,94,.22);
+      background: linear-gradient(180deg, rgba(214,178,94,.10), rgba(255,255,255,.02));
+      border-radius: var(--radius2);
+      padding:16px;
+      box-shadow: 0 18px 60px rgba(214,178,94,.12);
+    }
+    .videoFrame{
+      width:100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.26);
       display:flex;
       align-items:center;
-      background:
-        radial-gradient(circle at 70% 40%, rgba(225,6,0,0.25), transparent 55%),
-        #080808;
+      justify-content:center;
+      overflow:hidden;
+      position:relative;
     }
-
-    .hero-inner {
-      max-width:800px;
-      padding:0 24px;
-      margin-left:6%;
+    .playBtn{
+      border:1px solid rgba(214,178,94,.45);
+      background: rgba(214,178,94,.16);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:13px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      transition:.18s ease;
     }
-
-    .hero h1 {
-      font-size:48px;
-      font-weight:600;
-      margin-bottom:18px;
+    .playBtn:hover{transform: translateY(-1px); border-color: rgba(240,210,138,.6)}
+    .smallNote{font-size:12px; color:var(--muted); margin:10px 0 0; line-height:1.5}
+    .footer{
+      padding:28px 0 34px;
+      border-top:1px solid var(--line);
+      margin-top:18px;
+      color:rgba(185,186,198,.85);
+      font-size:12px;
     }
-
-    .hero p {
-      font-size:17px;
-      color:var(--gray);
-      margin-bottom:30px;
+    .footerRow{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
     }
-
-    .hero button {
-      background:var(--red);
-      border:none;
-      color:var(--white);
-      padding:16px 34px;
-      font-size:14px;
+    .mutedLink{color:rgba(185,186,198,.85)}
+    .mutedLink:hover{color:var(--text)}
+    /* Modal */
+    .modal{
+      position:fixed; inset:0; z-index:999;
+      background: rgba(0,0,0,.62);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .modalInner{
+      width:min(980px, 100%);
+      border:1px solid var(--line);
+      background: rgba(12,12,18,.92);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modalTop{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 14px;
+      border-bottom:1px solid var(--line);
+    }
+    .modalTop strong{font-size:12px; letter-spacing:.25px; text-transform:uppercase; color:rgba(240,210,138,.92)}
+    .x{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      border-radius:12px;
+      padding:8px 10px;
       cursor:pointer;
     }
+    .modalBody{padding:14px}
+    .hint{font-size:12px; color:var(--muted); margin:10px 0 0}
+    /* Responsive */
+    .hamburger{display:none}
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns:1fr}
+      .hero h2{font-size:34px}
+      .grid3{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .links{display:none}
+      .hamburger{display:inline-flex}
+      .brand{min-width:auto}
+    }
+    /* Simple mobile menu */
+    .mobileMenu{
+      display:none;
+      border-top:1px solid var(--line);
+      padding:10px 0 14px;
+    }
+    .mobileMenu a{
+      display:block;
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--muted);
+    }
+    .mobileMenu a:hover{background: rgba(255,255,255,.06); color:var(--text)}
+    .show{display:block}
   </style>
 </head>
 
 <body>
+  <header class="topbar">
+    <div class="wrap">
+      <nav class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>IronPeak Logistics</h1>
+            <p>Nationwide freight — dependable, compliant, on time.</p>
+          </div>
+        </div>
 
-<header>
-  <div class="nav">
-    <div class="logo">FREIGHT<span>DOWNS</span></div>
-    <div class="nav-actions">
-      <button onclick="openDispatch()">Open Dispatch</button>
-    </div>
-  </div>
-</header>
+        <div class="links" aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#lanes">Core Lanes</a>
+          <a href="#demo">Live Demo</a>
+          <a href="#contact">Contact</a>
+        </div>
 
-<section class="hero">
-  <div class="hero-inner">
-    <h1>Nationwide Freight Brokerage</h1>
-    <p>Reliable coverage. Fast communication. Built for operators who move with urgency.</p>
-    <button onclick="openDispatch()">Request Coverage</button>
-  </div>
-</section>
-<style>
-  section {
-    padding:100px 24px;
-  }
+        <div class="ctaRow">
+          <button class="btn hamburger" id="menuBtn" type="button">Menu</button>
+          <a class="btn" href="#demo">Watch Demo</a>
+          <a class="btn btnGold" href="#contact">Request Capacity</a>
+        </div>
+      </nav>
 
-  .container {
-    max-width:1200px;
-    margin:auto;
-  }
-
-  h2 {
-    font-size:32px;
-    margin-bottom:30px;
-  }
-
-  /* SERVICES */
-  .services {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:24px;
-  }
-
-  .service {
-    background:var(--dark-2);
-    padding:26px;
-  }
-
-  .service h3 {
-    font-size:18px;
-    margin-bottom:8px;
-  }
-
-  .service p {
-    font-size:14px;
-    color:var(--gray);
-  }
-
-  /* COVERAGE */
-  .coverage {
-    text-align:center;
-    background:#0c0c0c;
-  }
-
-  .coverage p {
-    color:var(--gray);
-    margin-bottom:28px;
-  }
-
-  @media(max-width:800px){
-    .hero h1 { font-size:36px; }
-  }
-</style>
-
-<section>
-  <div class="container">
-    <h2>Services</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Full Truckload (FTL)</h3>
-        <p>Nationwide lanes with dependable carrier partners.</p>
-      </div>
-      <div class="service">
-        <h3>Expedited Freight</h3>
-        <p>Time-sensitive shipments handled with urgency.</p>
-      </div>
-      <div class="service">
-        <h3>Equipment Types</h3>
-        <p>Dry Van · Reefer · Flatbed</p>
-      </div>
-      <div class="service">
-        <h3>Nationwide Coverage</h3>
-        <p>Coast-to-coast freight movement.</p>
+      <div class="mobileMenu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#lanes">Core Lanes</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div class="heroLeft">
+            <div class="pill">● Dispatch-ready operations <span style="opacity:.65;">|</span> <span>24/7 coverage</span></div>
+
+            <h2>Freight you can <span>count on</span> — with response times measured in minutes, not hours.</h2>
+            <p>
+              IronPeak Logistics provides dependable capacity across major U.S. lanes with clear communication,
+              compliant operations, and consistent on-time performance.
+            </p>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+              <a class="btn btnGold" href="#demo">Send a Load (Live Demo)</a>
+              <a class="btn" href="#services">View Services</a>
+            </div>
+
+            <div class="heroBullets" aria-label="Highlights">
+              <div class="bullet"><span class="dot"></span><span><strong>Dry Van + Reefer</strong><br/>Reliable capacity for common equipment types.</span></div>
+              <div class="bullet"><span class="dot"></span><span><strong>Fast Dispatch</strong><br/>Quick screening, fast responses, clean updates.</span></div>
+              <div class="bullet"><span class="dot"></span><span><strong>Compliance First</strong><br/>Safety-minded operations built for scale.</span></div>
+              <div class="bullet"><span class="dot"></span><span><strong>Core Lanes</strong><br/>Consistent coverage on high-demand corridors.</span></div>
+            </div>
+          </div>
+
+          <aside class="heroRight" id="contact">
+            <div class="cardTitle">
+              <h3>Request Capacity</h3>
+              <span class="pill" style="border-color:rgba(255,255,255,.14); color:rgba(185,186,198,.9); background:rgba(255,255,255,.04)">Fast reply</span>
+            </div>
+            <p class="mini">
+              For a realistic demo, paste a load into the website chat (bottom corner). You’ll see how quickly a load can be received and routed.
+            </p>
+
+            <div class="form">
+              <input class="input" placeholder="Company name" />
+              <div class="row">
+                <input class="input" placeholder="Email" />
+                <input class="input" placeholder="Phone" />
+              </div>
+              <input class="input" placeholder="Preferred lanes (e.g., CA → AZ, TX → GA)" />
+              <button class="btn btnGold" type="button" onclick="scrollToDemo()">Go to Live Demo Section</button>
+              <p class="help">Demo site only. This page is used to showcase a dispatch intake system.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="titleRow">
+          <div>
+            <h3>Services</h3>
+            <p>Built for consistent performance and clean communication.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="box">
+            <h4>Dry Van Freight</h4>
+            <p>General freight moves with steady capacity and clear status updates from pickup to delivery.</p>
+          </div>
+          <div class="box">
+            <h4>Reefer Freight</h4>
+            <p>Temperature-controlled shipments supported with operational consistency and proactive communication.</p>
+          </div>
+          <div class="box">
+            <h4>Expedited Coverage</h4>
+            <p>Time-sensitive freight routed quickly through dispatch workflows designed to reduce response delays.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lanes">
+      <div class="wrap">
+        <div class="split">
+          <div class="box">
+            <div class="titleRow">
+              <h3>Core Lanes</h3>
+              <p>High-demand corridors with consistent coverage.</p>
+            </div>
+            <p class="mini" style="margin-bottom:10px;">Examples:</p>
+            <div class="grid3" style="grid-template-columns:1fr 1fr 1fr;">
+              <div class="box" style="padding:14px;">
+                <h4 style="margin:0 0 6px;">CA → AZ</h4>
+                <p>Ontario / LA → Phoenix / Tucson</p>
+              </div>
+              <div class="box" style="padding:14px;">
+                <h4 style="margin:0 0 6px;">TX → GA</h4>
+                <p>Dallas / Houston → Atlanta</p>
+              </div>
+              <div class="box" style="padding:14px;">
+                <h4 style="margin:0 0 6px;">IL → PA</h4>
+                <p>Chicago → Pittsburgh / Philly</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="videoBox" id="demo">
+            <div class="titleRow">
+              <div>
+                <h3>Live Demo</h3>
+                <p>Paste a load into the chat widget and watch the workflow run.</p>
+              </div>
+              <button class="btn" type="button" onclick="openModal()">Open Demo Video</button>
+            </div>
+
+            <div class="videoFrame" aria-label="Demo video placeholder">
+              <button class="playBtn" type="button" onclick="openModal()">
+                ▶ Play Demo Video
+                <span style="opacity:.7;">(replace link)</span>
+              </button>
+            </div>
+            <p class="smallNote">
+              Demo concept: submit a load → get notified instantly → load is stored in a log. The chat widget in the corner is where the demo starts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="titleRow">
+          <div>
+            <h3>Shipper Experience</h3>
+            <p>Simple, clean, and fast.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="box">
+            <h4>Fast Acknowledgement</h4>
+            <p>Every inbound request gets an immediate confirmation so shippers know it was received.</p>
+          </div>
+          <div class="box">
+            <h4>Clean Intake</h4>
+            <p>Key load details are captured consistently to reduce back-and-forth and missed information.</p>
+          </div>
+          <div class="box">
+            <h4>Operational Visibility</h4>
+            <p>Loads are logged for review and routing so your team stays organized under high volume.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footerRow">
+          <div>
+            <strong style="letter-spacing:.25px;">IronPeak Logistics</strong>
+            <div style="margin-top:6px; opacity:.9;">Demo site for dispatch intake system showcase.</div>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <a class="mutedLink" href="#services">Services</a>
+            <a class="mutedLink" href="#lanes">Core Lanes</a>
+            <a class="mutedLink" href="#demo">Live Demo</a>
+            <a class="mutedLink" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Demo Video Modal -->
+  <div class="modal" id="modal">
+    <div class="modalInner">
+      <div class="modalTop">
+        <strong>Demo Video</strong>
+        <button class="x" type="button" onclick="closeModal()">Close</button>
+      </div>
+      <div class="modalBody">
+        <!-- Replace the src below with your Loom / YouTube embed -->
+        <div class="videoFrame" style="aspect-ratio:16/9;">
+          <iframe
+            id="demoFrame"
+            title="Demo Video"
+            style="width:100%; height:100%; border:0; display:none;"
+            allow="autoplay; fullscreen; picture-in-picture"
+          ></iframe>
+
+          <div id="demoPlaceholder" style="padding:18px; text-align:center;">
+            <div style="font-size:14px; margin-bottom:8px;">Embed your demo video here.</div>
+            <div class="hint">Replace the <code>DEMO_VIDEO_EMBED_URL</code> in the script with your Loom/YouTube embed URL.</div>
+          </div>
+        </div>
+        <p class="hint">Tip: Record your screen showing chat → email notification → Google Sheet update.</p>
+      </div>
+    </div>
   </div>
-</section>
 
-<section class="coverage">
-  <div class="container">
-    <h2>Request Coverage</h2>
-    <p>Submit a load request. Dispatch confirms details and routes next steps.</p>
-    <button onclick="openDispatch()" style="background:var(--red);border:none;color:white;padding:16px 34px;font-size:14px;">
-      Open Dispatch
-    </button>
-  </div>
-</section>
-<footer style="background:#060606;padding:40px 24px;text-align:center;">
-  <div class="logo">FREIGHT<span>DOWNS</span></div>
-  <p style="color:var(--gray);font-size:13px;margin-top:10px;">
-    Nationwide Freight Brokerage
-  </p>
-  <p style="color:var(--gray);font-size:12px;margin-top:12px;">
-    © 2025 Freight Downs. All rights reserved.
-  </p>
-</footer>
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('show');
+      });
+    }
 
-<!-- DISPATCH / WEBCHAT PLACEHOLDER -->
-<!-- PASTE YOUR DISPATCHER SCRIPT HERE -->
-<!-- KEEP EMPTY FOR NOW -->
+    function scrollToDemo(){
+      document.getElementById('demo')?.scrollIntoView({behavior:'smooth', block:'start'});
+    }
 
-<script>
-  function openDispatch() {
-    console.log("Dispatch opened");
-    // Dispatcher opens once embedded
-  }
-</script>
+    // Demo modal
+    const modal = document.getElementById('modal');
+    const demoFrame = document.getElementById('demoFrame');
+    const demoPlaceholder = document.getElementById('demoPlaceholder');
+
+    // Put your Loom or YouTube EMBED URL here (not the share URL)
+    // Example Loom embed URL format: https://www.loom.com/embed/VIDEO_ID
+    // Example YouTube embed URL format: https://www.youtube.com/embed/VIDEO_ID
+    const DEMO_VIDEO_EMBED_URL = "";
+
+    function openModal(){
+      modal.style.display = "flex";
+      if (DEMO_VIDEO_EMBED_URL && DEMO_VIDEO_EMBED_URL.trim().length > 0) {
+        demoFrame.src = DEMO_VIDEO_EMBED_URL;
+        demoFrame.style.display = "block";
+        demoPlaceholder.style.display = "none";
+      } else {
+        demoFrame.style.display = "none";
+        demoPlaceholder.style.display = "block";
+      }
+    }
+    function closeModal(){
+      modal.style.display = "none";
+      demoFrame.src = "";
+    }
+
+    // Close on background click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+
+  <!-- ============================
+       BOT CHAT WIDGET PLACEHOLDER
+       Replace this with your Botpress webchat embed script
+       ============================ -->
+
+  <!--
+  <script src="YOUR_BOTPRESS_WEBCHAT_SCRIPT.js"></script>
+  <script>
+    window.botpressWebChat.init({
+      // your config here
+    });
+  </script>
+  -->
 
 </body>
 </html>
