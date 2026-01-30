@@ -3,777 +3,495 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b0b0b" />
-  <title>Redline Transport | Reliable Freight. No Excuses.</title>
-  <meta name="description" content="Redline Transport is a reliable trucking and freight carrier offering dry van and reefer service across core U.S. lanes. Fast response, clean communication, on-time delivery." />
-
-  <!-- FONT (simple + tough) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Redline Transport — Reliable Freight. On-Time Dispatch.</title>
+  <meta name="description" content="Redline Transport provides dependable freight capacity across core U.S. lanes with fast dispatch response and clean updates." />
 
   <style>
     :root{
-      --black:#0b0b0b;
-      --black2:#121212;
+      --bg:#0b0b0e;
+      --panel:#111118;
+      --panel2:#0f0f14;
+      --text:#f5f6f7;
+      --muted:#b8bcc6;
+      --line:rgba(255,255,255,.10);
+      --red:#e10600;
+      --red2:#b80500;
       --white:#ffffff;
-      --gray:#b7b7b7;
-      --gray2:#8f8f8f;
-      --line: rgba(255,255,255,.12);
-      --line2: rgba(0,0,0,.14);
-      --red:#d10000;
-      --red2:#ff2a2a;
-      --shadow: 0 16px 45px rgba(0,0,0,.35);
-      --radius: 16px;
-      --max: 1180px;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:14px;
+      --max:1120px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      color:var(--white);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--black);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 500px at 18% 10%, rgba(225,6,0,.18), transparent 60%),
+        radial-gradient(900px 500px at 70% 15%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, #07070a 0%, #0b0b0e 40%, #07070a 100%);
+      color:var(--text);
       overflow-x:hidden;
     }
+
     a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
 
-    /* TOP BAR */
+    /* Top Nav */
     .topbar{
       position:sticky; top:0; z-index:50;
-      background: rgba(11,11,11,.92);
-      border-bottom: 1px solid var(--line);
       backdrop-filter: blur(10px);
+      background: rgba(10,10,14,.72);
+      border-bottom:1px solid var(--line);
     }
     .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      display:flex; align-items:center; justify-content:space-between;
       padding:14px 0;
+      gap:14px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width: 240px;
+      min-width: 210px;
     }
-    .mark{
-      width:42px; height:42px;
-      border-radius:12px;
-      background: linear-gradient(135deg, var(--red), var(--red2));
-      box-shadow: 0 12px 30px rgba(209,0,0,.25);
-      position:relative;
-      overflow:hidden;
+    .logo{
+      width:38px; height:38px; border-radius:10px;
+      background: linear-gradient(135deg, var(--red), #ff3b30);
+      box-shadow: 0 10px 28px rgba(225,6,0,.28);
     }
-    .mark:after{
-      content:"";
-      position:absolute;
-      inset:-60%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
-      transform: rotate(20deg);
-      animation: sheen 4.8s ease-in-out infinite;
-    }
-    @keyframes sheen{
-      0%{transform: translateX(-45%) rotate(20deg); opacity:0}
-      30%{opacity:.25}
-      55%{opacity:0}
-      100%{transform: translateX(45%) rotate(20deg); opacity:0}
-    }
-
     .brand h1{
-      font-family: Oswald, Inter, sans-serif;
-      margin:0;
-      font-size:18px;
-      letter-spacing: .6px;
-      text-transform:uppercase;
-      line-height:1.05;
+      font-size:14px; letter-spacing:.08em; margin:0;
+      text-transform:uppercase; font-weight:800;
+      line-height:1.1;
     }
     .brand p{
-      margin:3px 0 0;
-      font-size:12px;
-      color: var(--gray);
+      margin:0; font-size:12px; color:var(--muted);
+      letter-spacing:.02em;
     }
 
-    .links{
-      display:flex; gap:18px; align-items:center;
+    .navlinks{
+      display:flex; align-items:center; gap:16px;
     }
-    .links a{
-      font-size:13px;
-      color: var(--gray);
-      padding:8px 10px;
-      border-radius:999px;
-      transition:.15s ease;
+    .navlinks a{
+      font-size:13px; color:var(--muted);
+      padding:10px 10px; border-radius:12px;
+      transition: .2s ease;
     }
-    .links a:hover{
-      color: var(--white);
-      background: rgba(255,255,255,.06);
-    }
+    .navlinks a:hover{color:var(--text); background: rgba(255,255,255,.06)}
 
-    .btnRow{display:flex; gap:10px; align-items:center}
+    .navcta{
+      display:flex; align-items:center; gap:10px;
+    }
     .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      height:40px;
+      padding:0 14px;
+      border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
-      color: var(--white);
-      padding:10px 14px;
-      border-radius: 999px;
+      color:var(--text);
       font-size:13px;
-      font-weight:600;
+      font-weight:700;
+      transition:.2s ease;
       cursor:pointer;
-      transition:.15s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      user-select:none;
       white-space:nowrap;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06)}
-    .btnRed{
-      border:1px solid rgba(209,0,0,.55);
-      background: linear-gradient(180deg, rgba(209,0,0,.95), rgba(160,0,0,.95));
-      box-shadow: 0 18px 45px rgba(209,0,0,.18);
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
+    .btn--red{
+      border-color: rgba(225,6,0,.55);
+      background: linear-gradient(180deg, rgba(225,6,0,.95), rgba(184,5,0,.95));
+      box-shadow: 0 18px 40px rgba(225,6,0,.22);
     }
-    .btnRed:hover{filter: brightness(1.03)}
-    .hamburger{display:none}
+    .btn--red:hover{filter:brightness(1.05)}
+    .btn--ghost{background:transparent}
+
+    .burger{
+      display:none;
+      width:42px; height:40px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      align-items:center; justify-content:center;
+      cursor:pointer;
+    }
+    .burger span{
+      width:18px; height:2px; background: var(--text);
+      position:relative; display:block; border-radius:2px;
+    }
+    .burger span:before,.burger span:after{
+      content:""; position:absolute; left:0; width:18px; height:2px;
+      background: var(--text); border-radius:2px;
+    }
+    .burger span:before{top:-6px}
+    .burger span:after{top:6px}
+
     .mobileMenu{
       display:none;
-      border-top:1px solid var(--line);
-      padding:10px 0 14px;
+      padding: 0 0 14px 0;
+    }
+    .mobileMenu .card{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px;
     }
     .mobileMenu a{
       display:block;
-      padding:10px 12px;
+      padding: 12px 12px;
       border-radius: 12px;
-      color: var(--gray);
+      color: var(--muted);
     }
-    .mobileMenu a:hover{background: rgba(255,255,255,.06); color: var(--white)}
-    .show{display:block}
-
-    /* HERO */
-    .hero{
-      position:relative;
-      padding:34px 0 26px;
-    }
-    .heroShell{
-      border:1px solid var(--line);
-      background: var(--black2);
-      border-radius: 22px;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:0;
-      align-items:stretch;
-    }
-    .heroLeft{
-      padding:26px;
-      position:relative;
-    }
-    .heroTag{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color: var(--gray);
-      font-size:12px;
-      width:fit-content;
-    }
-    .heroTag .dot{
-      width:9px; height:9px; border-radius:999px;
-      background: var(--red);
-      box-shadow: 0 0 0 4px rgba(209,0,0,.18);
-    }
-    .hero h2{
-      font-family: Oswald, Inter, sans-serif;
-      margin:14px 0 10px;
-      font-size:44px;
-      line-height:1.05;
-      letter-spacing: .4px;
-      text-transform:uppercase;
-    }
-    .hero h2 span{color: var(--red2)}
-    .hero p{
-      margin:0 0 16px;
-      color: var(--gray);
-      font-size:14px;
-      line-height:1.65;
-      max-width: 65ch;
-    }
-    .heroActions{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .heroMeta{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      margin-top:18px;
-    }
-    .metaCard{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: 14px;
-      padding:12px;
-    }
-    .metaCard strong{
-      display:block;
-      font-size:12px;
-      letter-spacing:.2px;
-      text-transform:uppercase;
-      color: var(--white);
-      margin-bottom:6px;
-    }
-    .metaCard span{
-      display:block;
-      font-size:12px;
-      color: var(--gray);
-      line-height:1.5;
-    }
-
-    .heroRight{
-      border-left:1px solid var(--line);
-      background: #0f0f0f;
-      position:relative;
-      min-height: 360px;
-    }
-    .heroImage{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      filter: contrast(1.08) saturate(1.05);
-    }
-    .heroOverlay{
-      position:absolute; inset:0;
-      background:
-        linear-gradient(90deg, rgba(11,11,11,.85), rgba(11,11,11,.15) 55%, rgba(11,11,11,.10));
-      pointer-events:none;
-    }
-    .heroBadge{
-      position:absolute;
-      left:16px; bottom:16px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(11,11,11,.78);
-      backdrop-filter: blur(8px);
-      border-radius: 14px;
-      padding:10px 12px;
-      max-width: 320px;
-    }
-    .heroBadge strong{
-      display:block;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.25px;
-      margin-bottom:4px;
-    }
-    .heroBadge span{
-      display:block;
-      font-size:12px;
-      color: var(--gray);
-      line-height:1.45;
-    }
-
-    /* SECTIONS */
-    .section{padding:26px 0}
-    .sectionTitle{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:12px;
-    }
-    .sectionTitle h3{
-      margin:0;
-      font-family: Oswald, Inter, sans-serif;
-      font-size:22px;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-    }
-    .sectionTitle p{
-      margin:0;
-      color: var(--gray);
-      font-size:13px;
-    }
-
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: 0 14px 40px rgba(0,0,0,.25);
-    }
-    .card h4{
-      margin:0 0 8px;
-      font-size:14px;
-      text-transform:uppercase;
-      letter-spacing:.25px;
-    }
-    .card p{
-      margin:0;
-      color: var(--gray);
-      font-size:13px;
-      line-height:1.6;
-    }
-
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      align-items:stretch;
-    }
-
-    .laneList{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
-    }
-    .lane{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 14px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: var(--gray);
-      font-size:13px;
-    }
-    .lane strong{color: var(--white)}
-    .lane small{color: var(--gray2)}
-
-    /* DEMO */
-    .demoBox{
-      border:1px solid rgba(209,0,0,.38);
-      background: rgba(255,255,255,.03);
-      border-radius: 20px;
-      padding:16px;
-      box-shadow: 0 18px 55px rgba(209,0,0,.12);
-    }
-    .demoFrame{
-      width:100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      position:relative;
-    }
-    .demoFrame img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter: contrast(1.08) saturate(1.02);
-    }
-    .demoFrame .overlay{
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.35));
-      pointer-events:none;
-    }
-    .demoText{
-      margin:10px 0 0;
-      color: var(--gray);
-      font-size:13px;
-      line-height:1.55;
-    }
-    .callout{
-      margin-top:12px;
-      border-left: 4px solid var(--red);
-      padding:10px 12px;
-      background: rgba(255,255,255,.03);
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.10);
-      color: var(--gray);
-      font-size:13px;
-      line-height:1.55;
-    }
-    .callout strong{color:var(--white)}
-
-    /* CONTACT */
-    .form{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
-    }
-    .input{
-      width:100%;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.28);
-      color: var(--white);
-      border-radius: 14px;
-      padding:12px 12px;
-      font-size:13px;
-      outline:none;
-    }
-    .input::placeholder{color: rgba(183,183,183,.72)}
-    .row2{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
-
-    /* FOOTER */
-    .footer{
-      border-top:1px solid var(--line);
-      padding:22px 0 30px;
-      color: rgba(183,183,183,.9);
-      font-size:12px;
-    }
-    .footerRow{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .footer a{color: rgba(183,183,183,.9)}
-    .footer a:hover{color: var(--white)}
-
-    /* RESPONSIVE */
-    @media (max-width: 980px){
-      .links{display:none}
-      .hamburger{display:inline-flex}
-      .heroGrid{grid-template-columns:1fr}
-      .heroRight{border-left:none; border-top:1px solid var(--line); min-height: 260px}
-      .hero h2{font-size:36px}
-      .heroMeta{grid-template-columns:1fr; }
-      .grid3{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      .row2{grid-template-columns:1fr}
-    }
+    .mobileMenu a:hover{background: rgba(255,255,255,.06); color: var(--text)}
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
   <header class="topbar">
     <div class="wrap">
-      <nav class="nav">
+      <div class="nav">
         <div class="brand">
-          <div class="mark" aria-hidden="true"></div>
+          <div class="logo" aria-hidden="true"></div>
           <div>
             <h1>Redline Transport</h1>
             <p>Reliable freight • fast response • clean communication</p>
           </div>
         </div>
 
-        <div class="links" aria-label="Primary navigation">
+        <nav class="navlinks" aria-label="Primary">
           <a href="#services">Services</a>
           <a href="#equipment">Equipment</a>
           <a href="#lanes">Core Lanes</a>
-          <a href="#demo">Demo</a>
-          <a href="#contact">Contact</a>
-        </div>
+        </nav>
 
-        <div class="btnRow">
-          <button class="btn hamburger" id="menuBtn" type="button">Menu</button>
-          <a class="btn" href="#demo">Watch Demo</a>
-          <a class="btn btnRed" href="#contact">Get a Quote</a>
+        <div class="navcta">
+          <a class="btn btn--ghost" href="#demo">Watch Demo</a>
+          <a class="btn btn--red" href="#quote">Get a Quote</a>
+          <button class="burger" id="burger" aria-label="Open menu">
+            <span></span>
+          </button>
         </div>
-      </nav>
+      </div>
 
       <div class="mobileMenu" id="mobileMenu">
-        <a href="#services">Services</a>
-        <a href="#equipment">Equipment</a>
-        <a href="#lanes">Core Lanes</a>
-        <a href="#demo">Demo</a>
-        <a href="#contact">Contact</a>
+        <div class="card">
+          <a href="#services">Services</a>
+          <a href="#equipment">Equipment</a>
+          <a href="#lanes">Core Lanes</a>
+          <a href="#demo">Watch Demo</a>
+          <a href="#quote">Get a Quote</a>
+        </div>
       </div>
     </div>
   </header>
+    <main>
+    <!-- HERO -->
+    <section class="wrap" style="padding: 28px 18px 0 18px;">
+      <div style="
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,.10);
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
+          radial-gradient(1200px 520px at 70% 0%, rgba(225,6,0,.22), transparent 55%);
+        box-shadow: var(--shadow);
+        overflow:hidden;
+      ">
+        <!-- Hero image placeholder (add later) -->
+        <div style="
+          height: 260px;
+          background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.80));
+          border-bottom: 1px solid rgba(255,255,255,.08);
+          display:flex;
+          align-items:flex-end;
+          padding: 22px;
+        ">
+          <div style="max-width: 820px;">
+            <div style="
+              display:inline-flex; align-items:center; gap:10px;
+              padding:8px 12px; border-radius:999px;
+              border:1px solid rgba(255,255,255,.10);
+              background: rgba(0,0,0,.28);
+              color: var(--muted);
+              font-size: 12px;
+              letter-spacing:.02em;
+            ">
+              <span style="width:8px;height:8px;border-radius:999px;background:var(--red);display:inline-block;"></span>
+              Dispatch-ready operations • 24/7 intake coverage
+            </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="heroShell">
-        <div class="heroGrid">
-          <div class="heroLeft">
-            <div class="heroTag"><span class="dot"></span><span>Dispatch-ready operations • 24/7 intake coverage</span></div>
+            <h2 style="
+              margin:14px 0 10px 0;
+              font-size: clamp(28px, 4vw, 44px);
+              letter-spacing: .01em;
+              line-height: 1.08;
+              font-weight: 900;
+              text-transform: uppercase;
+            ">
+              Freight that runs <span style="color:var(--red)">on time</span> — no excuses.
+            </h2>
 
-            <h2>Freight that runs <span>on time</span> — no excuses.</h2>
-            <p>
-              Redline Transport provides dependable capacity across core U.S. lanes with clear communication,
-              compliant operations, and a dispatch team that responds fast.
+            <p style="margin:0; color: var(--muted); font-size: 14.5px; line-height:1.6;">
+              Dependable capacity across core U.S. lanes with fast response, clean updates, and simple dispatch communication.
             </p>
 
-            <div class="heroActions">
-              <a class="btn btnRed" href="#demo">Send a Load (Demo)</a>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+              <a class="btn btn--red" href="#quote">Request Capacity</a>
               <a class="btn" href="#services">View Services</a>
-            </div>
-
-            <div class="heroMeta" aria-label="Highlights">
-              <div class="metaCard">
-                <strong>Fast Response</strong>
-                <span>Loads acknowledged immediately with clean intake details.</span>
-              </div>
-              <div class="metaCard">
-                <strong>Reliable Capacity</strong>
-                <span>Dry van & reefer support across consistent lanes.</span>
-              </div>
-              <div class="metaCard">
-                <strong>Clear Updates</strong>
-                <span>No confusion. No chasing. Simple status updates.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="heroRight">
-            <!-- HERO IMAGE PLACEHOLDER -->
-            <!-- Replace this file later with your generated image using the same name -->
-            <img class="heroImage" src="hero-truck.jpg" alt="Redline Transport truck on highway" />
-            <div class="heroOverlay"></div>
-            <div class="heroBadge">
-              <strong>Now Booking Loads</strong>
-              <span>For this demo, use the site chat (bottom corner) to submit a load and see the workflow run.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <div>
-          <h3>Services</h3>
-          <p>Simple, dependable, and built for speed.</p>
-        </div>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h4>Full Truckload (FTL)</h4>
-          <p>Consistent coverage for high-volume freight with clean pickup-to-delivery communication.</p>
-        </div>
-        <div class="card">
-          <h4>Expedited Loads</h4>
-          <p>Time-sensitive freight routed fast with dispatch workflows built to reduce delays.</p>
-        </div>
-        <div class="card">
-          <h4>Broker / Shipper Support</h4>
-          <p>Quick intake, clear questions, and reliable updates—no back-and-forth chaos.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EQUIPMENT -->
-  <section class="section" id="equipment">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <div>
-          <h3>Equipment</h3>
-          <p>Common equipment types — no fluff.</p>
-        </div>
-      </div>
-
-      <div class="split">
-        <div class="card">
-          <h4>Dry Van</h4>
-          <p>General freight across major corridors. Reliable, repeatable, and easy to scale.</p>
-          <div style="margin-top:12px; border:1px solid rgba(255,255,255,.10); border-radius:14px; overflow:hidden;">
-            <img src="equipment-dryvan.jpg" alt="Dry van trailer" style="height:220px; width:100%; object-fit:cover;" />
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>Reefer</h4>
-          <p>Temperature-controlled shipments supported with consistent operations and proactive communication.</p>
-          <div style="margin-top:12px; border:1px solid rgba(255,255,255,.10); border-radius:14px; overflow:hidden;">
-            <img src="equipment-reefer.jpg" alt="Reefer trailer" style="height:220px; width:100%; object-fit:cover;" />
-          </div>
-        </div>
-      </div>
-
-      <p style="margin:12px 0 0; color:var(--gray2); font-size:12px;">
-        Image placeholders: <strong>hero-truck.jpg</strong>, <strong>equipment-dryvan.jpg</strong>, <strong>equipment-reefer.jpg</strong>
-      </p>
-    </div>
-  </section>
-
-  <!-- LANES -->
-  <section class="section" id="lanes">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <div>
-          <h3>Core Lanes</h3>
-          <p>High-demand corridors with consistent coverage.</p>
-        </div>
-      </div>
-
-      <div class="split">
-        <div class="card">
-          <h4>Popular Lanes</h4>
-          <p>Examples of lanes we commonly run:</p>
-
-          <div class="laneList" aria-label="Lane list">
-            <div class="lane"><strong>CA → AZ</strong><small>Ontario / LA → Phoenix / Tucson</small></div>
-            <div class="lane"><strong>TX → GA</strong><small>Dallas / Houston → Atlanta</small></div>
-            <div class="lane"><strong>IL → PA</strong><small>Chicago → Pittsburgh / Philly</small></div>
-            <div class="lane"><strong>NV → CA</strong><small>Las Vegas → Inland Empire</small></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>Why Brokers Choose Us</h4>
-          <p>
-            We keep it simple: fast responses, clean details, and consistent updates.
-            If a load works, we move quick. If it doesn’t, we tell you immediately.
-          </p>
-
-          <div class="callout">
-            <strong>Demo Note:</strong> Submit a load through the chat widget (bottom corner) to see an instant intake + notification workflow.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DEMO -->
-  <section class="section" id="demo">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <div>
-          <h3>Dispatch Intake Demo</h3>
-          <p>What your video will show (simple + impressive).</p>
-        </div>
-      </div>
-
-      <div class="demoBox">
-        <div class="demoFrame" aria-label="Demo video placeholder">
-          <!-- Optional background image for the demo section -->
-          <img src="demo-bg.jpg" alt="Demo background" />
-          <div class="overlay"></div>
-          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:18px; text-align:center;">
-            <div style="max-width:720px;">
-              <div style="font-family:Oswald, Inter, sans-serif; font-size:22px; text-transform:uppercase; letter-spacing:.6px;">
-                Demo Video Goes Here
-              </div>
-              <div style="margin-top:8px; color:var(--gray); font-size:13px; line-height:1.55;">
-                Replace with your Loom/YouTube embed later. The goal: type/paste a load into chat →
-                get instant notification → see Google Sheet updated.
-              </div>
-              <div style="margin-top:12px;">
-                <a class="btn btnRed" href="#contact">Request Capacity</a>
-                <a class="btn" href="#contact" style="margin-left:8px;">Send a Load</a>
-              </div>
+              <a class="btn btn--ghost" href="#demo">Send a Load (Demo)</a>
             </div>
           </div>
         </div>
 
-        <p class="demoText">
-          <strong>How to run the demo:</strong> open this page → paste a load into the chat widget →
-          your system extracts details + qualifies it → sends email notification → logs row into Google Sheets.
-        </p>
-
-        <div class="callout">
-          <strong>Important:</strong> This page is the “real trucking company” front. Your chat widget is the engine.
-          (Embed placeholder is at the bottom.)
-        </div>
-
-        <p style="margin:10px 0 0; color:var(--gray2); font-size:12px;">
-          Demo placeholders: <strong>demo-bg.jpg</strong>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <div>
-          <h3>Contact</h3>
-          <p>Get a quote or submit a load through chat.</p>
-        </div>
-      </div>
-
-      <div class="split">
-        <div class="card">
-          <h4>Request Capacity</h4>
-          <p>For this demo, the fastest way is the chat widget (bottom corner). For real operations, use this form.</p>
-
-          <div class="form">
-            <input class="input" placeholder="Company name" />
-            <div class="row2">
-              <input class="input" placeholder="Email" />
-              <input class="input" placeholder="Phone" />
+        <!-- Quick value cards -->
+        <div style="padding:18px 18px 20px 18px;">
+          <div style="
+            display:grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap:12px;
+          " id="valueGrid">
+            <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:14px;">
+              <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Fast Response</div>
+              <div style="color:var(--muted); margin-top:6px; font-size:13px; line-height:1.5;">Loads acknowledged quickly with clean intake details.</div>
             </div>
-            <input class="input" placeholder="Lane (e.g., CA → AZ) + equipment + pickup time" />
-            <button class="btn btnRed" type="button" onclick="alert('Demo form only. Use the chat widget to submit a load in the demo.')">
-              Submit Request
-            </button>
-            <p style="margin:0; color:var(--gray2); font-size:12px;">
-              Demo site only. No data is sent from this form.
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4>Company Info</h4>
-          <p style="margin-bottom:10px;">Redline Transport (Demo Carrier)</p>
-          <p><strong style="color:var(--white);">Operating Hours:</strong> Mon–Sun (Dispatch coverage)</p>
-          <p><strong style="color:var(--white);">Service:</strong> Dry Van / Reefer / Expedited</p>
-          <p><strong style="color:var(--white);">Coverage:</strong> Core U.S. lanes</p>
-
-          <div class="callout" style="margin-top:12px;">
-            <strong>Tip:</strong> Keep the copy short. Let the demo video + chat workflow do the talking.
+            <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:14px;">
+              <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Reliable Capacity</div>
+              <div style="color:var(--muted); margin-top:6px; font-size:13px; line-height:1.5;">Dry van & reefer support across consistent lanes.</div>
+            </div>
+            <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:14px;">
+              <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Clear Updates</div>
+              <div style="color:var(--muted); margin-top:6px; font-size:13px; line-height:1.5;">No back-and-forth. Simple status communication.</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footerRow">
-        <div>
-          <strong style="font-family:Oswald, Inter, sans-serif; letter-spacing:.6px; text-transform:uppercase;">
-            Redline Transport
-          </strong>
-          <div style="margin-top:6px;">Demo trucking site for dispatch intake workflow.</div>
+    <!-- DEMO (video placeholder) -->
+    <section class="wrap" id="demo" style="padding: 22px 18px 0 18px;">
+      <div style="
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.03);
+        box-shadow: var(--shadow);
+        overflow:hidden;
+      ">
+        <div style="padding:18px 18px 6px 18px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>
+            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em;">Watch Demo</div>
+            <div style="color:var(--muted); font-size:13px; margin-top:6px;">Short walkthrough of dispatch intake + automated routing.</div>
+          </div>
+          <a class="btn btn--red" href="#quote">Request Capacity</a>
         </div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="#services">Services</a>
-          <a href="#equipment">Equipment</a>
-          <a href="#lanes">Lanes</a>
-          <a href="#demo">Demo</a>
-          <a href="#contact">Contact</a>
+
+        <!-- Video placeholder block -->
+        <div style="
+          height: 260px;
+          background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.85));
+          border-top: 1px solid rgba(255,255,255,.08);
+          display:flex; align-items:center; justify-content:center;
+          color: rgba(255,255,255,.70);
+          font-weight:700;
+          letter-spacing:.02em;
+        ">
+          Demo video placeholder
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="wrap" id="services" style="padding: 22px 18px 0 18px;">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+        <div>
+          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Services</div>
+          <div style="color:var(--muted); font-size:13px; margin-top:6px;">Built for consistency and speed.</div>
+        </div>
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap:12px;
+      " id="servicesGrid">
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:16px;">
+          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Full Truckload (FTL)</div>
+          <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Consistent coverage for high-volume lanes with clean pickup-to-delivery communication.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:16px;">
+          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Expedited Loads</div>
+          <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Time-sensitive freight routed fast with dispatch workflows built to reduce delays.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:16px;">
+          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Broker / Shipper Support</div>
+          <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Quick intake, clear questions, and reliable updates—no chaos.</div>
+        </div>
+      </div>
+    </section>
+        <!-- EQUIPMENT (simple, clean) -->
+    <section class="wrap" id="equipment" style="padding: 22px 18px 0 18px;">
+      <div style="margin-bottom:12px;">
+        <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Equipment</div>
+        <div style="color:var(--muted); font-size:13px; margin-top:6px;">Common equipment types — no fluff.</div>
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap:12px;
+      " id="equipmentGrid">
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; overflow:hidden;">
+          <div style="padding:16px;">
+            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Dry Van</div>
+            <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">General freight across major corridors. Reliable, repeatable, easy to scale.</div>
+          </div>
+          <div style="height:180px; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.85)); border-top:1px solid rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65);">
+            Dry van image placeholder
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; overflow:hidden;">
+          <div style="padding:16px;">
+            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Reefer</div>
+            <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Temperature-controlled shipments supported with consistent ops and proactive communication.</div>
+          </div>
+          <div style="height:180px; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.85)); border-top:1px solid rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65);">
+            Reefer image placeholder
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE LANES -->
+    <section class="wrap" id="lanes" style="padding: 22px 18px 0 18px;">
+      <div style="margin-bottom:12px;">
+        <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Core Lanes</div>
+        <div style="color:var(--muted); font-size:13px; margin-top:6px;">High-demand corridors with consistent coverage.</div>
+      </div>
+
+      <div style="
+        background: rgba(255,255,255,.03);
+        border: 1px solid rgba(255,255,255,.10);
+        border-radius: 18px;
+        padding: 14px;
+        box-shadow: var(--shadow);
+      ">
+        <div style="display:grid; grid-template-columns: 1fr; gap:10px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22);">
+            <div style="font-weight:900; letter-spacing:.06em; text-transform:uppercase;">CA → AZ</div>
+            <div style="color:var(--muted); font-size:12px;">Ontario / LA → Phoenix / Tucson</div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22);">
+            <div style="font-weight:900; letter-spacing:.06em; text-transform:uppercase;">TX → GA</div>
+            <div style="color:var(--muted); font-size:12px;">Dallas / Houston → Atlanta</div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22);">
+            <div style="font-weight:900; letter-spacing:.06em; text-transform:uppercase;">IL → NJ</div>
+            <div style="color:var(--muted); font-size:12px;">Chicago → Newark / Elizabeth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE / CTA (NO FORM) -->
+    <section class="wrap" id="quote" style="padding: 22px 18px 28px 18px;">
+      <div style="
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,.10);
+        background: radial-gradient(900px 420px at 20% 0%, rgba(225,6,0,.22), transparent 60%),
+                    rgba(255,255,255,.03);
+        box-shadow: var(--shadow);
+        padding: 18px;
+        overflow:hidden;
+      ">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+          <div style="max-width:720px;">
+            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Request Capacity</div>
+            <div style="color:var(--muted); font-size:13px; margin-top:6px; line-height:1.6;">
+              For this demo, use the site chat (bottom corner) to submit a load and see how fast dispatch can respond.
+            </div>
+          </div>
+          <a class="btn btn--red" href="#demo">Watch Demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Small hint pill (not spammy) -->
+  <div style="
+    position:fixed; right:16px; bottom:16px; z-index:40;
+    display:flex; align-items:center; gap:10px;
+    padding:10px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.12);
+    background: rgba(10,10,14,.80);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.45);
+    color: rgba(255,255,255,.85);
+    font-size: 12.5px;
+  ">
+    <span style="width:8px;height:8px;border-radius:999px;background:var(--red);display:inline-block;"></span>
+    Chat with Dispatch
+  </div>
+
+  <footer style="border-top:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.25);">
+    <div class="wrap" style="padding:18px 18px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <div style="color:var(--muted); font-size:12px;">
+          © <span id="year"></span> Redline Transport. Demo site.
+        </div>
+        <div style="color:rgba(255,255,255,.55); font-size:12px;">
+          Safety • Compliance • On-time performance
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
+    // Mobile menu
+    const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (menuBtn) {
-      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('show'));
+    if (burger && mobileMenu){
+      burger.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display === 'block';
+        mobileMenu.style.display = isOpen ? 'none' : 'block';
+      });
     }
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Responsive grids (simple)
+    function applyResponsive(){
+      const w = window.innerWidth;
+      const vg = document.getElementById('valueGrid');
+      const sg = document.getElementById('servicesGrid');
+      const eg = document.getElementById('equipmentGrid');
+
+      if (vg) vg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(3, minmax(0, 1fr))';
+      if (sg) sg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(3, minmax(0, 1fr))';
+      if (eg) eg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(2, minmax(0, 1fr))';
+
+      // Desktop nav vs burger
+      const navlinks = document.querySelector('.navlinks');
+      const navcta = document.querySelector('.navcta');
+      if (w < 860){
+        if (navlinks) navlinks.style.display = 'none';
+        if (burger) burger.style.display = 'flex';
+      } else {
+        if (navlinks) navlinks.style.display = 'flex';
+        if (burger) burger.style.display = 'none';
+        if (mobileMenu) mobileMenu.style.display = 'none';
+      }
+    }
+    window.addEventListener('resize', applyResponsive);
+    applyResponsive();
   </script>
 
-  <!-- ============================
-       CHATBOT WIDGET PLACEHOLDER
-       Paste your Botpress webchat embed here later.
-       ============================ -->
-
-  <!--
-  <script src="YOUR_BOTPRESS_WEBCHAT_SCRIPT.js"></script>
-  <script>
-    window.botpressWebChat.init({
-      // your config here
-    });
-  </script>
-  -->
+  <!-- ==============================
+    BOTPRESS WEBCHAT PLACEHOLDER
+    Paste your Botpress webchat script BELOW this line when ready.
+    (Leave empty for now)
+  =============================== -->
 
 </body>
 </html>
