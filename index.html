@@ -144,6 +144,55 @@
       color: var(--muted);
     }
     .mobileMenu a:hover{background: rgba(255,255,255,.06); color: var(--text)}
+
+    /* ===== Botpress embedded chat panel styling ===== */
+    .chatPanel{
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .chatHeader{
+      padding:18px 18px 10px 18px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .chatHeader .title{
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    .chatHeader .sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:6px;
+      line-height:1.6;
+    }
+
+    /* This is the container Botpress will render INTO */
+    #webchat{
+      width: 100%;
+      height: 560px; /* desktop height */
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.80));
+    }
+
+    @media (max-width: 860px){
+      #webchat{ height: 620px; }
+    }
+  </style>
+
+  <!-- ✅ Botpress Embed (NOT floating bubble). Loads into #webchat -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2026/01/27/19/20260127192744-BK72ZYS6.js" defer></script>
+
+  <!-- Hide the floating bubble so it behaves like an embedded iframe panel -->
+  <style>
+    #webchat .bpFab { display:none !important; }
   </style>
 </head>
 
@@ -163,6 +212,7 @@
           <a href="#services">Services</a>
           <a href="#equipment">Equipment</a>
           <a href="#lanes">Core Lanes</a>
+          <a href="#livechat">Live Chat</a>
         </nav>
 
         <div class="navcta">
@@ -180,12 +230,14 @@
           <a href="#equipment">Equipment</a>
           <a href="#lanes">Core Lanes</a>
           <a href="#demo">Watch Demo</a>
+          <a href="#livechat">Live Chat</a>
           <a href="#quote">Get a Quote</a>
         </div>
       </div>
     </div>
   </header>
-    <main>
+
+  <main>
     <!-- HERO -->
     <section class="wrap" style="padding: 28px 18px 0 18px;">
       <div style="
@@ -197,7 +249,6 @@
         box-shadow: var(--shadow);
         overflow:hidden;
       ">
-        <!-- Hero image placeholder (add later) -->
         <div style="
           height: 260px;
           background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.80));
@@ -238,12 +289,11 @@
             <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
               <a class="btn btn--red" href="#quote">Request Capacity</a>
               <a class="btn" href="#services">View Services</a>
-              <a class="btn btn--ghost" href="#demo">Send a Load (Demo)</a>
+              <a class="btn btn--ghost" href="#livechat">Send a Load (Demo)</a>
             </div>
           </div>
         </div>
 
-        <!-- Quick value cards -->
         <div style="padding:18px 18px 20px 18px;">
           <div style="
             display:grid;
@@ -284,7 +334,6 @@
           <a class="btn btn--red" href="#quote">Request Capacity</a>
         </div>
 
-        <!-- Video placeholder block -->
         <div style="
           height: 260px;
           background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.85));
@@ -296,6 +345,24 @@
         ">
           Demo video placeholder
         </div>
+      </div>
+    </section>
+
+    <!-- ✅ LIVE CHAT SECTION (Embedded Botpress) -->
+    <section class="wrap" id="livechat" style="padding: 22px 18px 0 18px;">
+      <div class="chatPanel">
+        <div class="chatHeader">
+          <div>
+            <div class="title">Live Dispatch Chat</div>
+            <div class="sub">
+              For the demo: paste a load in the chat below. You’ll get the notification + sheet entry instantly.
+            </div>
+          </div>
+          <a class="btn btn--red" href="#quote">Request Capacity</a>
+        </div>
+
+        <!-- Botpress renders HERE -->
+        <div id="webchat"></div>
       </div>
     </section>
 
@@ -327,7 +394,8 @@
         </div>
       </div>
     </section>
-        <!-- EQUIPMENT (simple, clean) -->
+
+    <!-- EQUIPMENT -->
     <section class="wrap" id="equipment" style="padding: 22px 18px 0 18px;">
       <div style="margin-bottom:12px;">
         <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Equipment</div>
@@ -407,31 +475,14 @@
           <div style="max-width:720px;">
             <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Request Capacity</div>
             <div style="color:var(--muted); font-size:13px; margin-top:6px; line-height:1.6;">
-              For this demo, use the site chat (bottom corner) to submit a load and see how fast dispatch can respond.
+              For this demo, use the Live Chat section to submit a load and see how fast dispatch responds.
             </div>
           </div>
-          <a class="btn btn--red" href="#demo">Watch Demo</a>
+          <a class="btn btn--red" href="#livechat">Open Live Chat</a>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- Small hint pill (not spammy) -->
-  <div style="
-    position:fixed; right:16px; bottom:16px; z-index:40;
-    display:flex; align-items:center; gap:10px;
-    padding:10px 12px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.12);
-    background: rgba(10,10,14,.80);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 18px 40px rgba(0,0,0,.45);
-    color: rgba(255,255,255,.85);
-    font-size: 12.5px;
-  ">
-    <span style="width:8px;height:8px;border-radius:999px;background:var(--red);display:inline-block;"></span>
-    Chat with Dispatch
-  </div>
 
   <footer style="border-top:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.25);">
     <div class="wrap" style="padding:18px 18px;">
@@ -471,9 +522,7 @@
       if (sg) sg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(3, minmax(0, 1fr))';
       if (eg) eg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(2, minmax(0, 1fr))';
 
-      // Desktop nav vs burger
       const navlinks = document.querySelector('.navlinks');
-      const navcta = document.querySelector('.navcta');
       if (w < 860){
         if (navlinks) navlinks.style.display = 'none';
         if (burger) burger.style.display = 'flex';
@@ -485,11 +534,6 @@
     }
     window.addEventListener('resize', applyResponsive);
     applyResponsive();
-    <!-- BOTPRESS CHAT -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
-  <script src="https://files.bpcontent.cloud/2026/01/27/19/20260127192744-BK72ZYS6.js" defer></script>
-</body>
-</html>
-  
+  </script>
 </body>
 </html>
