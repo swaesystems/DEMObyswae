@@ -1,274 +1,217 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Redline Transport — Reliable Freight</title>
-<meta name="description" content="Reliable freight capacity with fast dispatch response and clean communication.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redline Transport — Reliable Freight</title>
 
-<style>
-:root{
-  --red:#e10600;
-  --black:#0b0b0e;
-  --white:#ffffff;
-  --gray:#b8bcc6;
-  --panel:#111118;
-  --border:rgba(255,255,255,.12);
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #0b0b0e;
+      color: #ffffff;
+    }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:linear-gradient(180deg,#050507,#0b0b0e);
-  color:var(--white);
-}
+    header {
+      background: #ffffff;
+      color: #000;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #e10600;
+    }
 
-a{text-decoration:none;color:inherit}
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: .08em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
 
-.wrap{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 20px;
-}
+    header span {
+      color: #e10600;
+      font-weight: 800;
+      font-size: 12px;
+    }
 
-/* NAV */
-nav{
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:rgba(5,5,7,.85);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--border);
-}
-.navbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.logo{
-  width:36px;height:36px;
-  background:var(--red);
-  border-radius:8px;
-}
-.brand h1{
-  font-size:14px;
-  margin:0;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-.brand p{
-  margin:0;
-  font-size:12px;
-  color:var(--gray);
-}
-.cta{
-  background:var(--red);
-  padding:10px 18px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:700;
-}
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 22px;
+    }
 
-/* HERO */
-.hero{
-  padding:60px 0 40px;
-}
-.hero h2{
-  font-size:42px;
-  font-weight:900;
-  text-transform:uppercase;
-  margin:0 0 12px;
-}
-.hero h2 span{color:var(--red)}
-.hero p{
-  color:var(--gray);
-  max-width:640px;
-  line-height:1.6;
-}
-.hero-buttons{
-  display:flex;
-  gap:14px;
-  margin-top:22px;
-}
-.btn{
-  padding:12px 20px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  font-size:13px;
-  font-weight:700;
-}
-.btn.red{
-  background:var(--red);
-  border-color:var(--red);
-}
+    h2 {
+      font-size: 40px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
 
-/* SECTIONS */
-section{
-  padding:36px 0;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;
-}
-.card{
-  background:rgba(255,255,255,.03);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:16px;
-}
-.card h3{
-  font-size:12px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin:0 0 6px;
-}
-.card p{
-  font-size:13px;
-  color:var(--gray);
-  line-height:1.5;
-}
+    h2 span {
+      color: #e10600;
+    }
 
-/* CHAT BUBBLE */
-#chatHint{
-  position:fixed;
-  right:90px;
-  bottom:38px;
-  background:rgba(10,10,14,.9);
-  border:1px solid var(--border);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:12px;
-  color:var(--gray);
-  z-index:9998;
-}
-#chatHint strong{color:var(--white)}
+    p {
+      color: #b8bcc6;
+      max-width: 620px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
 
-#webchat{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:380px;
-  height:520px;
-  z-index:9999;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,.6);
-}
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 40px;
+    }
 
-/* MOBILE */
-@media(max-width:520px){
-  .hero h2{font-size:30px}
-  #webchat{width:92vw;height:70vh}
-  #chatHint{display:none}
-}
-</style>
+    .card {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 18px;
+      background: rgba(255,255,255,.03);
+    }
 
-<!-- BOTPRESS -->
-<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2026/01/27/19/20260127192744-BK72ZYS6.js" defer></script>
+    .card strong {
+      display: block;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-size: 13px;
+    }
 
-<style>
-/* hide default bp bubble */
-.bpFab{display:none!important}
-</style>
+    footer {
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding: 18px 22px;
+      color: #777;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* === CHAT BUBBLE === */
+    #chat-bubble {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 62px;
+      height: 62px;
+      border-radius: 999px;
+      background: #e10600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 20px 40px rgba(225,6,0,.4);
+      z-index: 9999;
+    }
+
+    #chat-nudge {
+      position: fixed;
+      bottom: 92px;
+      right: 22px;
+      background: #111;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #fff;
+      opacity: .9;
+      z-index: 9998;
+    }
+
+    /* === CHAT PANEL === */
+    #chat-panel {
+      position: fixed;
+      bottom: 96px;
+      right: 22px;
+      width: 360px;
+      height: 520px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      display: none;
+      background: #000;
+      z-index: 9999;
+    }
+
+    #chat-panel iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 480px) {
+      #chat-panel {
+        width: 92%;
+        right: 4%;
+        height: 70vh;
+      }
+    }
+  </style>
+
+  <!-- Botpress -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
 </head>
 
 <body>
 
-<nav>
-  <div class="wrap navbar">
-    <div class="brand">
-      <div class="logo"></div>
-      <div>
-        <h1>Redline Transport</h1>
-        <p>Reliable freight • fast dispatch • clean communication</p>
-      </div>
-    </div>
-    <a href="#chat" class="cta">Request Capacity</a>
-  </div>
-</nav>
+<header>
+  <h1>Redline Transport</h1>
+  <span>Reliable Freight • Fast Dispatch</span>
+</header>
 
-<div class="wrap hero">
+<main>
   <h2>Freight that runs <span>on time</span>.</h2>
-  <p>Dependable capacity across core U.S. lanes with rapid load intake and clear dispatch communication.</p>
-  <div class="hero-buttons">
-    <a class="btn red" href="#chat">Send a Load</a>
-    <a class="btn" href="#services">View Services</a>
-  </div>
-</div>
+  <p>
+    Redline Transport provides dependable truckload capacity across core U.S. lanes.
+    Clean communication. Fast response. No back-and-forth.
+  </p>
 
-<section id="services">
-  <div class="wrap grid">
+  <div class="cards">
     <div class="card">
-      <h3>Fast Response</h3>
-      <p>Loads acknowledged quickly with clean intake details.</p>
+      <strong>Fast Intake</strong>
+      Loads acknowledged instantly.
     </div>
     <div class="card">
-      <h3>Reliable Capacity</h3>
-      <p>Dry van & reefer support across consistent lanes.</p>
+      <strong>Dry Van / Reefer</strong>
+      Consistent equipment support.
     </div>
     <div class="card">
-      <h3>Clear Updates</h3>
-      <p>No chasing. Simple, direct dispatch communication.</p>
+      <strong>Clear Updates</strong>
+      Simple status communication.
     </div>
   </div>
-</section>
-
-<section>
-  <div class="wrap grid">
-    <div class="card">
-      <h3>Full Truckload (FTL)</h3>
-      <p>Consistent coverage for high-volume lanes.</p>
-    </div>
-    <div class="card">
-      <h3>Expedited Loads</h3>
-      <p>Time-sensitive freight routed fast.</p>
-    </div>
-    <div class="card">
-      <h3>Broker / Shipper Support</h3>
-      <p>Quick intake. No back-and-forth.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap grid">
-    <div class="card">
-      <h3>CA → AZ</h3>
-      <p>Ontario / LA → Phoenix</p>
-    </div>
-    <div class="card">
-      <h3>TX → GA</h3>
-      <p>Dallas / Houston → Atlanta</p>
-    </div>
-    <div class="card">
-      <h3>IL → NJ</h3>
-      <p>Chicago → Newark</p>
-    </div>
-  </div>
-</section>
-
-<!-- CHAT -->
-<div id="chat"></div>
-<div id="chatHint"><strong>Dispatch:</strong> Paste load here</div>
-<div id="webchat"></div>
+</main>
 
 <footer>
-  <div class="wrap" style="padding:20px;color:var(--gray);font-size:12px;">
-    © <span id="year"></span> Redline Transport
-  </div>
+  © 2026 Redline Transport — Demo
 </footer>
 
+<!-- CHAT UI -->
+<div id="chat-nudge">Paste load here</div>
+
+<div id="chat-bubble">R</div>
+
+<div id="chat-panel">
+  <iframe src="https://files.bpcontent.cloud/2026/01/27/19/20260127192744-BK72ZYS6.js"></iframe>
+</div>
+
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+  const bubble = document.getElementById('chat-bubble');
+  const panel = document.getElementById('chat-panel');
+  const nudge = document.getElementById('chat-nudge');
+
+  bubble.onclick = () => {
+    const open = panel.style.display === 'block';
+    panel.style.display = open ? 'none' : 'block';
+    nudge.style.display = 'none';
+  };
 </script>
 
 </body>
