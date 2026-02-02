@@ -1,709 +1,275 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Redline Transport — Reliable Freight. On-Time Dispatch.</title>
-  <meta name="description" content="Redline Transport provides dependable freight capacity across core U.S. lanes with fast dispatch response and clean updates." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redline Transport — Reliable Freight</title>
+<meta name="description" content="Reliable freight capacity with fast dispatch response and clean communication.">
 
-  <style>
-    :root{
-      --bg:#0b0b0e;
-      --panel:#111118;
-      --panel2:#0f0f14;
-      --text:#f5f6f7;
-      --muted:#b8bcc6;
-      --line:rgba(255,255,255,.10);
-      --red:#e10600;
-      --red2:#b80500;
-      --white:#ffffff;
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius:18px;
-      --radius2:14px;
-      --max:1120px;
-    }
+<style>
+:root{
+  --red:#e10600;
+  --black:#0b0b0e;
+  --white:#ffffff;
+  --gray:#b8bcc6;
+  --panel:#111118;
+  --border:rgba(255,255,255,.12);
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(900px 500px at 18% 10%, rgba(225,6,0,.18), transparent 60%),
-        radial-gradient(900px 500px at 70% 15%, rgba(255,255,255,.06), transparent 55%),
-        linear-gradient(180deg, #07070a 0%, #0b0b0e 40%, #07070a 100%);
-      color:var(--text);
-      overflow-x:hidden;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:linear-gradient(180deg,#050507,#0b0b0e);
+  color:var(--white);
+}
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+a{text-decoration:none;color:inherit}
 
-    /* Top Nav */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(10,10,14,.72);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 210px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:10px;
-      background: linear-gradient(135deg, var(--red), #ff3b30);
-      box-shadow: 0 10px 28px rgba(225,6,0,.28);
-    }
-    .brand h1{
-      font-size:14px; letter-spacing:.08em; margin:0;
-      text-transform:uppercase; font-weight:800;
-      line-height:1.1;
-    }
-    .brand p{
-      margin:0; font-size:12px; color:var(--muted);
-      letter-spacing:.02em;
-    }
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 20px;
+}
 
-    .navlinks{
-      display:flex; align-items:center; gap:16px;
-    }
-    .navlinks a{
-      font-size:13px; color:var(--muted);
-      padding:10px 10px; border-radius:12px;
-      transition: .2s ease;
-    }
-    .navlinks a:hover{color:var(--text); background: rgba(255,255,255,.06)}
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(5,5,7,.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo{
+  width:36px;height:36px;
+  background:var(--red);
+  border-radius:8px;
+}
+.brand h1{
+  font-size:14px;
+  margin:0;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.brand p{
+  margin:0;
+  font-size:12px;
+  color:var(--gray);
+}
+.cta{
+  background:var(--red);
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+}
 
-    .navcta{
-      display:flex; align-items:center; gap:10px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      height:40px;
-      padding:0 14px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      font-size:13px;
-      font-weight:700;
-      transition:.2s ease;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
-    .btn--red{
-      border-color: rgba(225,6,0,.55);
-      background: linear-gradient(180deg, rgba(225,6,0,.95), rgba(184,5,0,.95));
-      box-shadow: 0 18px 40px rgba(225,6,0,.22);
-    }
-    .btn--red:hover{filter:brightness(1.05)}
-    .btn--ghost{background:transparent}
+/* HERO */
+.hero{
+  padding:60px 0 40px;
+}
+.hero h2{
+  font-size:42px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin:0 0 12px;
+}
+.hero h2 span{color:var(--red)}
+.hero p{
+  color:var(--gray);
+  max-width:640px;
+  line-height:1.6;
+}
+.hero-buttons{
+  display:flex;
+  gap:14px;
+  margin-top:22px;
+}
+.btn{
+  padding:12px 20px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  font-size:13px;
+  font-weight:700;
+}
+.btn.red{
+  background:var(--red);
+  border-color:var(--red);
+}
 
-    .burger{
-      display:none;
-      width:42px; height:40px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      align-items:center; justify-content:center;
-      cursor:pointer;
-    }
-    .burger span{
-      width:18px; height:2px; background: var(--text);
-      position:relative; display:block; border-radius:2px;
-    }
-    .burger span:before,.burger span:after{
-      content:""; position:absolute; left:0; width:18px; height:2px;
-      background: var(--text); border-radius:2px;
-    }
-    .burger span:before{top:-6px}
-    .burger span:after{top:6px}
+/* SECTIONS */
+section{
+  padding:36px 0;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+.card h3{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin:0 0 6px;
+}
+.card p{
+  font-size:13px;
+  color:var(--gray);
+  line-height:1.5;
+}
 
-    .mobileMenu{
-      display:none;
-      padding: 0 0 14px 0;
-    }
-    .mobileMenu .card{
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--line);
-      border-radius: 16px;
-      padding: 10px;
-    }
-    .mobileMenu a{
-      display:block;
-      padding: 12px 12px;
-      border-radius: 12px;
-      color: var(--muted);
-    }
-    .mobileMenu a:hover{background: rgba(255,255,255,.06); color: var(--text)}
+/* CHAT BUBBLE */
+#chatHint{
+  position:fixed;
+  right:90px;
+  bottom:38px;
+  background:rgba(10,10,14,.9);
+  border:1px solid var(--border);
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:12px;
+  color:var(--gray);
+  z-index:9998;
+}
+#chatHint strong{color:var(--white)}
 
-    /* ===== Botpress embedded container (iframe-style) ===== */
-    #webchat{
-      width:100%;
-      height:100%;
-      background: transparent;
-    }
+#webchat{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:380px;
+  height:520px;
+  z-index:9999;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
+}
 
-    /* ===== Custom Chat Bubble + Note + Modal ===== */
-    #chatNudge{
-      position: fixed;
-      right: 92px;
-      bottom: 30px;
-      z-index: 9999;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(10,10,14,.86);
-      color: rgba(255,255,255,.92);
-      font-size: 12.5px;
-      font-weight: 800;
-      letter-spacing: .02em;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 40px rgba(0,0,0,.45);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      max-width: 240px;
-      user-select:none;
-      cursor:pointer;
-    }
-    #chatNudge .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--red);
-      box-shadow: 0 0 0 4px rgba(225,6,0,.18);
-    }
+/* MOBILE */
+@media(max-width:520px){
+  .hero h2{font-size:30px}
+  #webchat{width:92vw;height:70vh}
+  #chatHint{display:none}
+}
+</style>
 
-    #chatBubble{
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 9999;
-      width: 62px;
-      height: 62px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(225,6,0,.98), rgba(184,5,0,.98));
-      box-shadow: 0 22px 55px rgba(225,6,0,.28);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition: .18s ease;
-    }
-    #chatBubble:hover{transform: translateY(-2px); filter: brightness(1.05)}
-    #chatBubble .icon{
-      font-size: 22px;
-      line-height: 1;
-      transform: translateY(1px);
-    }
+<!-- BOTPRESS -->
+<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2026/01/27/19/20260127192744-BK72ZYS6.js" defer></script>
 
-    #chatModal{
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      display: none;
-    }
-    #chatBackdrop{
-      position:absolute;
-      inset:0;
-      background: rgba(0,0,0,.60);
-      backdrop-filter: blur(6px);
-    }
-    #chatWindow{
-      position:absolute;
-      right: 18px;
-      bottom: 96px;
-      width: min(420px, calc(100vw - 36px));
-      height: min(640px, calc(100vh - 140px));
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(12,12,16,.96);
-      box-shadow: 0 30px 90px rgba(0,0,0,.65);
-      overflow:hidden;
-      display:flex;
-      flex-direction: column;
-    }
-
-    #chatTop{
-      padding: 12px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap:10px;
-      background: rgba(255,255,255,.03);
-    }
-    #chatTop .left{
-      display:flex; align-items:center; gap:10px;
-      min-width: 0;
-    }
-    #chatTop .badge{
-      width:34px; height:34px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--red), #ff3b30);
-      display:flex; align-items:center; justify-content:center;
-      font-weight: 900;
-      letter-spacing:.02em;
-    }
-    #chatTop .titles{
-      display:flex; flex-direction: column;
-      min-width:0;
-    }
-    #chatTop .name{
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-    #chatTop .sub{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-    #chatClose{
-      width: 38px; height: 38px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      cursor:pointer;
-      font-size: 18px;
-      line-height: 1;
-      display:flex; align-items:center; justify-content:center;
-      transition:.15s ease;
-    }
-    #chatClose:hover{background: rgba(255,255,255,.07)}
-
-    #chatBody{
-      flex:1;
-      padding: 10px;
-    }
-    #chatFrame{
-      width: 100%;
-      height: 100%;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.85));
-      overflow:hidden;
-    }
-
-    @media (max-width: 860px){
-      #chatNudge{right: 86px;}
-      #chatWindow{
-        right: 12px;
-        bottom: 90px;
-        width: calc(100vw - 24px);
-      }
-    }
-  </style>
-
-  <!-- Botpress Embed (iframe style). Loads into #webchat -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
-  <script src="https://files.bpcontent.cloud/2026/01/27/19/20260127192744-BK72ZYS6.js" defer></script>
+<style>
+/* hide default bp bubble */
+.bpFab{display:none!important}
+</style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
-          <div>
-            <h1>Redline Transport</h1>
-            <p>Reliable freight • fast response • clean communication</p>
-          </div>
-        </div>
 
-        <nav class="navlinks" aria-label="Primary">
-          <a href="#services">Services</a>
-          <a href="#equipment">Equipment</a>
-          <a href="#lanes">Core Lanes</a>
-        </nav>
-
-        <div class="navcta">
-          <a class="btn btn--ghost" href="#demo">Watch Demo</a>
-          <a class="btn btn--red" href="#quote">Get a Quote</a>
-          <button class="burger" id="burger" aria-label="Open menu">
-            <span></span>
-          </button>
-        </div>
-      </div>
-
-      <div class="mobileMenu" id="mobileMenu">
-        <div class="card">
-          <a href="#services">Services</a>
-          <a href="#equipment">Equipment</a>
-          <a href="#lanes">Core Lanes</a>
-          <a href="#demo">Watch Demo</a>
-          <a href="#quote">Get a Quote</a>
-        </div>
+<nav>
+  <div class="wrap navbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <h1>Redline Transport</h1>
+        <p>Reliable freight • fast dispatch • clean communication</p>
       </div>
     </div>
-  </header>
-
-  <main>
-    <!-- HERO -->
-    <section class="wrap" style="padding: 28px 18px 0 18px;">
-      <div style="
-        border-radius: 24px;
-        border: 1px solid rgba(255,255,255,.10);
-        background:
-          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
-          radial-gradient(1200px 520px at 70% 0%, rgba(225,6,0,.22), transparent 55%);
-        box-shadow: var(--shadow);
-        overflow:hidden;
-      ">
-        <div style="
-          height: 260px;
-          background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.80));
-          border-bottom: 1px solid rgba(255,255,255,.08);
-          display:flex;
-          align-items:flex-end;
-          padding: 22px;
-        ">
-          <div style="max-width: 820px;">
-            <div style="
-              display:inline-flex; align-items:center; gap:10px;
-              padding:8px 12px; border-radius:999px;
-              border:1px solid rgba(255,255,255,.10);
-              background: rgba(0,0,0,.28);
-              color: var(--muted);
-              font-size: 12px;
-              letter-spacing:.02em;
-            ">
-              <span style="width:8px;height:8px;border-radius:999px;background:var(--red);display:inline-block;"></span>
-              Dispatch-ready operations • 24/7 intake coverage
-            </div>
-
-            <h2 style="
-              margin:14px 0 10px 0;
-              font-size: clamp(28px, 4vw, 44px);
-              letter-spacing: .01em;
-              line-height: 1.08;
-              font-weight: 900;
-              text-transform: uppercase;
-            ">
-              Freight that runs <span style="color:var(--red)">on time</span> — no excuses.
-            </h2>
-
-            <p style="margin:0; color: var(--muted); font-size: 14.5px; line-height:1.6;">
-              Dependable capacity across core U.S. lanes with fast response, clean updates, and simple dispatch communication.
-            </p>
-
-            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
-              <a class="btn btn--red" href="#quote">Request Capacity</a>
-              <a class="btn" href="#services">View Services</a>
-              <button class="btn btn--ghost" type="button" id="openChatFromHero">Send a Load (Demo)</button>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding:18px 18px 20px 18px;">
-          <div style="
-            display:grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap:12px;
-          " id="valueGrid">
-            <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:14px;">
-              <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Fast Response</div>
-              <div style="color:var(--muted); margin-top:6px; font-size:13px; line-height:1.5;">Loads acknowledged quickly with clean intake details.</div>
-            </div>
-            <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:14px;">
-              <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Reliable Capacity</div>
-              <div style="color:var(--muted); margin-top:6px; font-size:13px; line-height:1.5;">Dry van & reefer support across consistent lanes.</div>
-            </div>
-            <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:14px;">
-              <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Clear Updates</div>
-              <div style="color:var(--muted); margin-top:6px; font-size:13px; line-height:1.5;">No back-and-forth. Simple status communication.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DEMO (video placeholder) -->
-    <section class="wrap" id="demo" style="padding: 22px 18px 0 18px;">
-      <div style="
-        border-radius: 24px;
-        border: 1px solid rgba(255,255,255,.10);
-        background: rgba(255,255,255,.03);
-        box-shadow: var(--shadow);
-        overflow:hidden;
-      ">
-        <div style="padding:18px 18px 6px 18px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-          <div>
-            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em;">Watch Demo</div>
-            <div style="color:var(--muted); font-size:13px; margin-top:6px;">Short walkthrough of dispatch intake + automated routing.</div>
-          </div>
-          <a class="btn btn--red" href="#quote">Request Capacity</a>
-        </div>
-
-        <div style="
-          height: 260px;
-          background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.85));
-          border-top: 1px solid rgba(255,255,255,.08);
-          display:flex; align-items:center; justify-content:center;
-          color: rgba(255,255,255,.70);
-          font-weight:700;
-          letter-spacing:.02em;
-        ">
-          Demo video placeholder
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="wrap" id="services" style="padding: 22px 18px 0 18px;">
-      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
-        <div>
-          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Services</div>
-          <div style="color:var(--muted); font-size:13px; margin-top:6px;">Built for consistency and speed.</div>
-        </div>
-      </div>
-
-      <div style="
-        display:grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap:12px;
-      " id="servicesGrid">
-        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:16px;">
-          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Full Truckload (FTL)</div>
-          <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Consistent coverage for high-volume lanes with clean pickup-to-delivery communication.</div>
-        </div>
-        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:16px;">
-          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Expedited Loads</div>
-          <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Time-sensitive freight routed fast with dispatch workflows built to reduce delays.</div>
-        </div>
-        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; padding:16px;">
-          <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Broker / Shipper Support</div>
-          <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Quick intake, clear questions, and reliable updates—no chaos.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EQUIPMENT -->
-    <section class="wrap" id="equipment" style="padding: 22px 18px 0 18px;">
-      <div style="margin-bottom:12px;">
-        <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Equipment</div>
-        <div style="color:var(--muted); font-size:13px; margin-top:6px;">Common equipment types — no fluff.</div>
-      </div>
-
-      <div style="
-        display:grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap:12px;
-      " id="equipmentGrid">
-        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; overflow:hidden;">
-          <div style="padding:16px;">
-            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Dry Van</div>
-            <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">General freight across major corridors. Reliable, repeatable, easy to scale.</div>
-          </div>
-          <div style="height:180px; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.85)); border-top:1px solid rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65);">
-            Dry van image placeholder
-          </div>
-        </div>
-
-        <div style="background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:18px; overflow:hidden;">
-          <div style="padding:16px;">
-            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:12px;">Reefer</div>
-            <div style="color:var(--muted); margin-top:8px; font-size:13px; line-height:1.55;">Temperature-controlled shipments supported with consistent ops and proactive communication.</div>
-          </div>
-          <div style="height:180px; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.85)); border-top:1px solid rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65);">
-            Reefer image placeholder
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CORE LANES -->
-    <section class="wrap" id="lanes" style="padding: 22px 18px 0 18px;">
-      <div style="margin-bottom:12px;">
-        <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Core Lanes</div>
-        <div style="color:var(--muted); font-size:13px; margin-top:6px;">High-demand corridors with consistent coverage.</div>
-      </div>
-
-      <div style="
-        background: rgba(255,255,255,.03);
-        border: 1px solid rgba(255,255,255,.10);
-        border-radius: 18px;
-        padding: 14px;
-        box-shadow: var(--shadow);
-      ">
-        <div style="display:grid; grid-template-columns: 1fr; gap:10px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22);">
-            <div style="font-weight:900; letter-spacing:.06em; text-transform:uppercase;">CA → AZ</div>
-            <div style="color:var(--muted); font-size:12px;">Ontario / LA → Phoenix / Tucson</div>
-          </div>
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22);">
-            <div style="font-weight:900; letter-spacing:.06em; text-transform:uppercase;">TX → GA</div>
-            <div style="color:var(--muted); font-size:12px;">Dallas / Houston → Atlanta</div>
-          </div>
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22);">
-            <div style="font-weight:900; letter-spacing:.06em; text-transform:uppercase;">IL → NJ</div>
-            <div style="color:var(--muted); font-size:12px;">Chicago → Newark / Elizabeth</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUOTE / CTA -->
-    <section class="wrap" id="quote" style="padding: 22px 18px 28px 18px;">
-      <div style="
-        border-radius: 24px;
-        border: 1px solid rgba(255,255,255,.10);
-        background: radial-gradient(900px 420px at 20% 0%, rgba(225,6,0,.22), transparent 60%),
-                    rgba(255,255,255,.03);
-        box-shadow: var(--shadow);
-        padding: 18px;
-        overflow:hidden;
-      ">
-        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap;">
-          <div style="max-width:720px;">
-            <div style="font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:18px;">Request Capacity</div>
-            <div style="color:var(--muted); font-size:13px; margin-top:6px; line-height:1.6;">
-              For this demo, click the chat bubble (bottom-right) and paste a load to see instant dispatch intake.
-            </div>
-          </div>
-          <button class="btn btn--red" type="button" id="openChatFromCTA">Open Dispatch Chat</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer style="border-top:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.25);">
-    <div class="wrap" style="padding:18px 18px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-        <div style="color:var(--muted); font-size:12px;">
-          © <span id="year"></span> Redline Transport. Demo site.
-        </div>
-        <div style="color:rgba(255,255,255,.55); font-size:12px;">
-          Safety • Compliance • On-time performance
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== Custom Chat Nudge + Bubble ===== -->
-  <div id="chatNudge" title="Open Dispatch Chat">
-    <span class="dot"></span>
-    Paste load here 👇
+    <a href="#chat" class="cta">Request Capacity</a>
   </div>
+</nav>
 
-  <button id="chatBubble" aria-label="Open Dispatch Chat">
-    <span class="icon">💬</span>
-  </button>
+<div class="wrap hero">
+  <h2>Freight that runs <span>on time</span>.</h2>
+  <p>Dependable capacity across core U.S. lanes with rapid load intake and clear dispatch communication.</p>
+  <div class="hero-buttons">
+    <a class="btn red" href="#chat">Send a Load</a>
+    <a class="btn" href="#services">View Services</a>
+  </div>
+</div>
 
-  <!-- ===== Modal with embedded Botpress chat ===== -->
-  <div id="chatModal" aria-hidden="true">
-    <div id="chatBackdrop"></div>
-
-    <div id="chatWindow" role="dialog" aria-label="Redline Dispatch Chat">
-      <div id="chatTop">
-        <div class="left">
-          <div class="badge">R</div>
-          <div class="titles">
-            <div class="name">Redline Dispatch</div>
-            <div class="sub">Paste a load to start</div>
-          </div>
-        </div>
-        <button id="chatClose" aria-label="Close chat">✕</button>
-      </div>
-
-      <div id="chatBody">
-        <div id="chatFrame">
-          <div id="webchat"></div>
-        </div>
-      </div>
+<section id="services">
+  <div class="wrap grid">
+    <div class="card">
+      <h3>Fast Response</h3>
+      <p>Loads acknowledged quickly with clean intake details.</p>
+    </div>
+    <div class="card">
+      <h3>Reliable Capacity</h3>
+      <p>Dry van & reefer support across consistent lanes.</p>
+    </div>
+    <div class="card">
+      <h3>Clear Updates</h3>
+      <p>No chasing. Simple, direct dispatch communication.</p>
     </div>
   </div>
+</section>
 
-  <script>
-    // Mobile menu
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (burger && mobileMenu){
-      burger.addEventListener('click', () => {
-        const isOpen = mobileMenu.style.display === 'block';
-        mobileMenu.style.display = isOpen ? 'none' : 'block';
-      });
-    }
+<section>
+  <div class="wrap grid">
+    <div class="card">
+      <h3>Full Truckload (FTL)</h3>
+      <p>Consistent coverage for high-volume lanes.</p>
+    </div>
+    <div class="card">
+      <h3>Expedited Loads</h3>
+      <p>Time-sensitive freight routed fast.</p>
+    </div>
+    <div class="card">
+      <h3>Broker / Shipper Support</h3>
+      <p>Quick intake. No back-and-forth.</p>
+    </div>
+  </div>
+</section>
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<section>
+  <div class="wrap grid">
+    <div class="card">
+      <h3>CA → AZ</h3>
+      <p>Ontario / LA → Phoenix</p>
+    </div>
+    <div class="card">
+      <h3>TX → GA</h3>
+      <p>Dallas / Houston → Atlanta</p>
+    </div>
+    <div class="card">
+      <h3>IL → NJ</h3>
+      <p>Chicago → Newark</p>
+    </div>
+  </div>
+</section>
 
-    // Responsive grids (simple)
-    function applyResponsive(){
-      const w = window.innerWidth;
-      const vg = document.getElementById('valueGrid');
-      const sg = document.getElementById('servicesGrid');
-      const eg = document.getElementById('equipmentGrid');
+<!-- CHAT -->
+<div id="chat"></div>
+<div id="chatHint"><strong>Dispatch:</strong> Paste load here</div>
+<div id="webchat"></div>
 
-      if (vg) vg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(3, minmax(0, 1fr))';
-      if (sg) sg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(3, minmax(0, 1fr))';
-      if (eg) eg.style.gridTemplateColumns = (w < 900) ? '1fr' : 'repeat(2, minmax(0, 1fr))';
+<footer>
+  <div class="wrap" style="padding:20px;color:var(--gray);font-size:12px;">
+    © <span id="year"></span> Redline Transport
+  </div>
+</footer>
 
-      const navlinks = document.querySelector('.navlinks');
-      if (w < 860){
-        if (navlinks) navlinks.style.display = 'none';
-        if (burger) burger.style.display = 'flex';
-      } else {
-        if (navlinks) navlinks.style.display = 'flex';
-        if (burger) burger.style.display = 'none';
-        if (mobileMenu) mobileMenu.style.display = 'none';
-      }
-    }
-    window.addEventListener('resize', applyResponsive);
-    applyResponsive();
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-    // ===== Chat modal logic =====
-    const modal = document.getElementById('chatModal');
-    const backdrop = document.getElementById('chatBackdrop');
-    const closeBtn = document.getElementById('chatClose');
-    const bubble = document.getElementById('chatBubble');
-    const nudge = document.getElementById('chatNudge');
-    const openHero = document.getElementById('openChatFromHero');
-    const openCTA = document.getElementById('openChatFromCTA');
-
-    function openChat(){
-      modal.style.display = 'block';
-      modal.setAttribute('aria-hidden', 'false');
-      // hide nudge once opened
-      if (nudge) nudge.style.display = 'none';
-    }
-    function closeChat(){
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
-    }
-
-    bubble?.addEventListener('click', openChat);
-    nudge?.addEventListener('click', openChat);
-    openHero?.addEventListener('click', openChat);
-    openCTA?.addEventListener('click', openChat);
-
-    backdrop?.addEventListener('click', closeChat);
-    closeBtn?.addEventListener('click', closeChat);
-
-    // Auto-hide the nudge after 6 seconds (still clickable before it fades)
-    setTimeout(() => {
-      if (!nudge) return;
-      nudge.style.opacity = '0';
-      nudge.style.pointerEvents = 'none';
-      setTimeout(() => { if (nudge) nudge.style.display = 'none'; }, 350);
-    }, 6000);
-  </script>
 </body>
 </html>
